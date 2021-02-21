@@ -12,6 +12,7 @@
 #include "weapon_f1"
 #include "weapon_paranoia_knife"
 #include "weapon_paranoia_mp5"
+#include "weapon_painkiller"
 
 void WeaponRegister(){
     for(uint i = 1; i <= 8; i++){
@@ -37,6 +38,7 @@ void WeaponRegister(){
     ParanoiaAmmoRegister("ammo_valammobox", "ammo_valammobox");
     ParanoiaAmmoRegister("ammo_paranoia_rpg", "ammo_paranoia_rpg");
     ParanoiaAmmoRegister("ammo_f1", "ammo_f1");
+    ParanoiaAmmoRegister("ammo_painkiller", "ammo_painkiller");
 
     ParanoiaWeaponRegister("weapon_ak74", "weapon_ak74", "7Н6", "ammo_ak74");
     ParanoiaWeaponRegister("weapon_f1", "weapon_f1", "f1", "ammo_f1");
@@ -48,6 +50,7 @@ void WeaponRegister(){
     ParanoiaWeaponRegister("weapon_val", "weapon_val", "7Н8", "ammo_val");
     ParanoiaWeaponRegister("weapon_spas12", "weapon_spas12", "buckshot", "ammo_spas12");
     ParanoiaWeaponRegister("weapon_paranoia_knife", "weapon_paranoia_knife", "", "");
+    ParanoiaWeaponRegister("weapon_painkiller", "weapon_painkiller", "painkiller", "ammo_painkiller");
     ParanoiaWeaponRegister("weapon_paranoia_mp5", "weapon_paranoia_mp5", "9mm", "ammo_paranoia_mp5", "ARgrenades");
 
     ParanoiaAmmoRegister("paranoia_rpg_rocket", "paranoia_rpg_rocket");

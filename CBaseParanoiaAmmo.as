@@ -200,3 +200,25 @@ class ammo_f1 : CBaseParanoiaAmmo{
         iMax = 5;
     }
 }
+
+class ammo_painkiller : CBaseParanoiaAmmo{
+    ammo_painkiller(){
+        szModel = "models/paranoia/w_painkiller.mdl";
+        szAmmo = "painkiller";
+        iGive = 1;
+        iMax = 5;
+    }
+
+    bool AddAmmo( CBaseEntity@ pOther ) { 
+        CBasePlayer@ pPlayer = cast<CBasePlayer@>(@pOther);
+        if(@pPlayer !is null && pPlayer.HasNamedPlayerItem("weapon_painkiller") is null){
+            pPlayer.GiveNamedItem("weapon_painkiller");
+            return true;
+        }
+		else if (pOther.GiveAmmo( iGive, szAmmo, iMax ) != -1){
+			g_SoundSystem.EmitSound( self.edict(), CHAN_ITEM, "items/9mmclip1.wav", 1, ATTN_NORM);
+			return true;
+		}
+		return false;
+	}
+}
