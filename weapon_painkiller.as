@@ -18,8 +18,8 @@ class weapon_painkiller : CBaseParanoiaWeapon{
 
     bool Deploy(){
         g_PlayerFuncs.ScreenFade(pPlayer, Vector(124,225,251), 0.3, 0, 255, FFADE_IN | FFADE_MODULATE);
-        pPlayer.TakeHealth(15, DMG_MEDKITHEAL);
-        pPlayer.TakeArmor(2, DMG_MEDKITHEAL);
+        pPlayer.TakeHealth(7, DMG_MEDKITHEAL);
+        pPlayer.m_bitsDamageType &= ~DMG_TIMEBASED;
         pPlayer.m_rgAmmo( self.m_iPrimaryAmmoType, pPlayer.m_rgAmmo(self.m_iPrimaryAmmoType) - 1 );
         g_SoundSystem.EmitSoundDyn( self.edict(), CHAN_ITEM, aryFireSound[0], 1.0, ATTN_NORM, 0, 95 + Math.RandomLong( 0, 10 ) );
         pPlayer.SelectLastItem();

@@ -222,3 +222,25 @@ class ammo_painkiller : CBaseParanoiaAmmo{
 		return false;
 	}
 }
+
+class ammo_flashbattery : CBaseParanoiaAmmo{
+    ammo_flashbattery(){
+        szModel = "models/paranoia/w_flashbattery.mdl";
+        szAmmo = "flashbattery";
+        iGive = 1;
+        iMax = 7;
+    }
+
+    bool AddAmmo( CBaseEntity@ pOther ) { 
+        CBasePlayer@ pPlayer = cast<CBasePlayer@>(@pOther);
+        if(@pPlayer !is null && pPlayer.HasNamedPlayerItem("weapon_flashbattery") is null){
+            pPlayer.GiveNamedItem("weapon_flashbattery");
+            return true;
+        }
+		else if (pOther.GiveAmmo( iGive, szAmmo, iMax ) != -1){
+			g_SoundSystem.EmitSound( self.edict(), CHAN_ITEM, "items/9mmclip1.wav", 1, ATTN_NORM);
+			return true;
+		}
+		return false;
+	}
+}

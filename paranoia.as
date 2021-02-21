@@ -6,4 +6,6 @@ void PluginInit(){
 
 void MapInit(){
 	WeaponRegister();
+
+    BatteryHookRegister();
 }

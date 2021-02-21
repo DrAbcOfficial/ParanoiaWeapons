@@ -13,6 +13,7 @@
 #include "weapon_paranoia_knife"
 #include "weapon_paranoia_mp5"
 #include "weapon_painkiller"
+#include "weapon_flashbattery"
 
 void WeaponRegister(){
     for(uint i = 1; i <= 8; i++){
@@ -39,6 +40,7 @@ void WeaponRegister(){
     ParanoiaAmmoRegister("ammo_paranoia_rpg", "ammo_paranoia_rpg");
     ParanoiaAmmoRegister("ammo_f1", "ammo_f1");
     ParanoiaAmmoRegister("ammo_painkiller", "ammo_painkiller");
+    ParanoiaAmmoRegister("ammo_flashbattery", "ammo_flashbattery");
 
     ParanoiaWeaponRegister("weapon_ak74", "weapon_ak74", "7Н6", "ammo_ak74");
     ParanoiaWeaponRegister("weapon_f1", "weapon_f1", "f1", "ammo_f1");
@@ -51,8 +53,29 @@ void WeaponRegister(){
     ParanoiaWeaponRegister("weapon_spas12", "weapon_spas12", "buckshot", "ammo_spas12");
     ParanoiaWeaponRegister("weapon_paranoia_knife", "weapon_paranoia_knife", "", "");
     ParanoiaWeaponRegister("weapon_painkiller", "weapon_painkiller", "painkiller", "ammo_painkiller");
+    ParanoiaWeaponRegister("weapon_flashbattery", "weapon_flashbattery", "flashbattery", "ammo_painkiller");
     ParanoiaWeaponRegister("weapon_paranoia_mp5", "weapon_paranoia_mp5", "9mm", "ammo_paranoia_mp5", "ARgrenades");
 
     ParanoiaAmmoRegister("paranoia_rpg_rocket", "paranoia_rpg_rocket");
     ParanoiaWeaponRegister("weapon_paranoia_rpg", "weapon_paranoia_rpg", "rockets", "ammo_paranoia_rpg");
+}
+
+array<float> aryPlayerBattery(33, 100);
+HookReturnCode PlayerPostThink( CBasePlayer@ pPlayer )
+{
+    int i  = pPlayer.entindex();
+	if(pPlayer.FlashlightIsOn()){
+        if(aryPlayerBattery[i] <= 0)
+            pPlayer.FlashlightTurnOff();
+        else
+            aryPlayerBattery[i] = Math.max(0, aryPlayerBattery[i] - g_Engine.frametime);
+    }
+    if(pPlayer.m_iFlashBattery != int(aryPlayerBattery[i]))
+        pPlayer.m_iFlashBattery = int(aryPlayerBattery[i]);
+    return HOOK_CONTINUE;
+}
+
+
+void BatteryHookRegister(){
+    g_Hooks.RegisterHook(Hooks::Player::PlayerPostThink, @PlayerPostThink);
 }
