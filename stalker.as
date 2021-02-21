@@ -1,5 +1,5 @@
 #include "include"
-#include "../point_checkpoint"
+#include "point_checkpoint"
 #include "controller"
 
 array<ItemMapping@> g_ItemMappings = { 
@@ -477,8 +477,9 @@ dictionary dicAddItem = {
 				Vector(1202, 508, 582)
             })
         }
-    },
+    }
 };
+
 
 void MapInit(){
     RegisterPointCheckPointEntity();

@@ -199,6 +199,19 @@ class ammo_f1 : CBaseParanoiaAmmo{
         iGive = 1;
         iMax = 5;
     }
+
+    bool AddAmmo( CBaseEntity@ pOther ) override { 
+        CBasePlayer@ pPlayer = cast<CBasePlayer@>(@pOther);
+        if(@pPlayer !is null && pPlayer.HasNamedPlayerItem("weapon_f1") is null){
+            pPlayer.GiveNamedItem("weapon_f1");
+            return true;
+        }
+		else if (pOther.GiveAmmo( iGive, szAmmo, iMax ) != -1){
+			g_SoundSystem.EmitSound( self.edict(), CHAN_ITEM, "items/9mmclip1.wav", 1, ATTN_NORM);
+			return true;
+		}
+		return false;
+	}
 }
 
 class ammo_painkiller : CBaseParanoiaAmmo{
@@ -209,7 +222,7 @@ class ammo_painkiller : CBaseParanoiaAmmo{
         iMax = 5;
     }
 
-    bool AddAmmo( CBaseEntity@ pOther ) { 
+    bool AddAmmo( CBaseEntity@ pOther ) override { 
         CBasePlayer@ pPlayer = cast<CBasePlayer@>(@pOther);
         if(@pPlayer !is null && pPlayer.HasNamedPlayerItem("weapon_painkiller") is null){
             pPlayer.GiveNamedItem("weapon_painkiller");
@@ -231,7 +244,7 @@ class ammo_flashbattery : CBaseParanoiaAmmo{
         iMax = 7;
     }
 
-    bool AddAmmo( CBaseEntity@ pOther ) { 
+    bool AddAmmo( CBaseEntity@ pOther ) override { 
         CBasePlayer@ pPlayer = cast<CBasePlayer@>(@pOther);
         if(@pPlayer !is null && pPlayer.HasNamedPlayerItem("weapon_flashbattery") is null){
             pPlayer.GiveNamedItem("weapon_flashbattery");
