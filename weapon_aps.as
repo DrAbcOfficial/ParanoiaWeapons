@@ -3,6 +3,7 @@ class weapon_aps : CBaseParanoiaWeapon{
         szVModel = "models/paranoia/v_aps.mdl";
         szPModel = "models/paranoia/p_aps.mdl";
         szWModel = "models/paranoia/w_aps.mdl";
+        szHUDModel = "sprites/paranoia/p_hud3.spr";
         szShellModel = "models/paranoia/aps_shell.mdl";
 
         szAnimation = "onehanded";

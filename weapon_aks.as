@@ -3,6 +3,7 @@ class weapon_aks : CBaseParanoiaWeapon{
         szVModel = "models/paranoia/v_aks.mdl";
         szPModel = "models/paranoia/p_aks.mdl";
         szWModel = "models/paranoia/w_aks.mdl";
+        szHUDModel = "sprites/paranoia/p_hud4.spr";
         szShellModel = "models/paranoia/aks_shell.mdl";
 
         szAnimation = "m16";

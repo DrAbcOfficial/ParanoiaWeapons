@@ -4,6 +4,7 @@ class weapon_flashbattery : CBaseParanoiaWeapon{
         szSniperAnimation = "medkit";
 
         szWModel = "models/paranoia/w_flashbattery.mdl";
+        szHUDModel = "sprites/paranoia/p_hud1.spr";
 
         iDefaultGive = 1;
         iMaxAmmo1 = 7;
@@ -45,6 +46,7 @@ class weapon_flashbattery : CBaseParanoiaWeapon{
             g_SoundSystem.PrecacheSound( aryFireSound[i] );
         }
         g_Game.PrecacheModel( szWModel );
+        g_Game.PrecacheModel( szHUDModel );
         g_Game.PrecacheGeneric( "sprites/" + szSprDir + "/" + self.pev.classname + ".txt");
     }
 

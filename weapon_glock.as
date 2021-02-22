@@ -4,6 +4,7 @@ class weapon_paranoia_glock : CBaseParanoiaWeapon{
         szPModel = "models/paranoia/p_glock.mdl";
         szWModel = "models/paranoia/w_glock.mdl";
         szShellModel = "models/paranoia/glock_shell.mdl";
+        szHUDModel = "sprites/paranoia/p_hud3.spr";
 
         szAnimation = "onehanded";
         szSniperAnimation = "onehanded";

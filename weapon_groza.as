@@ -4,6 +4,7 @@ class weapon_groza : CBaseParanoiaWeapon{
         szPModel = "models/paranoia/p_groza.mdl";
         szWModel = "models/paranoia/w_groza.mdl";
         szShellModel = "models/paranoia/groza_shell.mdl";
+        szHUDModel = "sprites/paranoia/p_hud6.spr";
 
         szAnimation = "sniper";
 

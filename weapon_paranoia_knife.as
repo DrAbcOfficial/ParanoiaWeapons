@@ -6,6 +6,7 @@ class weapon_paranoia_knife : CBaseParanoiaWeapon{
         szVModel = "models/paranoia/v_crowbar.mdl";
         szPModel = "models/paranoia/p_crowbar.mdl";
         szWModel = "models/paranoia/w_crowbar.mdl";
+        szHUDModel = "sprites/paranoia/p_hud2.spr";
 
         szAnimation = "crowbar";
 

@@ -201,68 +201,57 @@ class ammo_droppedf1 : CBaseParanoiaAmmo{
     }
 }
 
-class ammo_f1 : CBaseParanoiaAmmo{
+abstract class CBaseWeaponBaseAmmo : CBaseParanoiaAmmo{
+    protected string szWeaponName = "";
+    bool AddAmmo( CBaseEntity@ pOther ) override { 
+        CBasePlayer@ pPlayer = cast<CBasePlayer@>(@pOther);
+        if(@pPlayer !is null && pPlayer.HasNamedPlayerItem(szWeaponName) is null){
+            pPlayer.GiveNamedItem(szWeaponName);
+            return true;
+        }
+		else if (pOther.GiveAmmo( iGive, szAmmo, iMax ) != -1){
+			g_SoundSystem.EmitSound( self.edict(), CHAN_ITEM, "items/9mmclip1.wav", 1, ATTN_NORM);
+			return true;
+		}
+		return false;
+	}
+}
+
+class ammo_f1 : CBaseWeaponBaseAmmo{
     ammo_f1(){
+        szWeaponName = "weapon_f1";
         szModel = "models/paranoia/w_grenadeammo.mdl";
         szAmmo = "f1";
         iGive = 1;
         iMax = 5;
     }
-
-    bool AddAmmo( CBaseEntity@ pOther ) override { 
-        CBasePlayer@ pPlayer = cast<CBasePlayer@>(@pOther);
-        if(@pPlayer !is null && pPlayer.HasNamedPlayerItem("weapon_f1") is null){
-            pPlayer.GiveNamedItem("weapon_f1");
-            return true;
-        }
-		else if (pOther.GiveAmmo( iGive, szAmmo, iMax ) != -1){
-			g_SoundSystem.EmitSound( self.edict(), CHAN_ITEM, "items/9mmclip1.wav", 1, ATTN_NORM);
-			return true;
-		}
-		return false;
-	}
 }
 
-class ammo_painkiller : CBaseParanoiaAmmo{
+class ammo_painkiller : CBaseWeaponBaseAmmo{
     ammo_painkiller(){
+        szWeaponName = "weapon_painkiller";
         szModel = "models/paranoia/w_painkiller.mdl";
         szAmmo = "painkiller";
         iGive = 1;
         iMax = 5;
     }
-
-    bool AddAmmo( CBaseEntity@ pOther ) override { 
-        CBasePlayer@ pPlayer = cast<CBasePlayer@>(@pOther);
-        if(@pPlayer !is null && pPlayer.HasNamedPlayerItem("weapon_painkiller") is null){
-            pPlayer.GiveNamedItem("weapon_painkiller");
-            return true;
-        }
-		else if (pOther.GiveAmmo( iGive, szAmmo, iMax ) != -1){
-			g_SoundSystem.EmitSound( self.edict(), CHAN_ITEM, "items/9mmclip1.wav", 1, ATTN_NORM);
-			return true;
-		}
-		return false;
-	}
+    void Spawn() override{
+        self.pev.spawnflags = 256;
+        CBaseWeaponBaseAmmo::Spawn();
+    }
 }
 
-class ammo_flashbattery : CBaseParanoiaAmmo{
+class ammo_flashbattery : CBaseWeaponBaseAmmo{
     ammo_flashbattery(){
+        szWeaponName = "weapon_flashbattery";
         szModel = "models/paranoia/w_flashbattery.mdl";
         szAmmo = "flashbattery";
         iGive = 1;
         iMax = 7;
     }
 
-    bool AddAmmo( CBaseEntity@ pOther ) override { 
-        CBasePlayer@ pPlayer = cast<CBasePlayer@>(@pOther);
-        if(@pPlayer !is null && pPlayer.HasNamedPlayerItem("weapon_flashbattery") is null){
-            pPlayer.GiveNamedItem("weapon_flashbattery");
-            return true;
-        }
-		else if (pOther.GiveAmmo( iGive, szAmmo, iMax ) != -1){
-			g_SoundSystem.EmitSound( self.edict(), CHAN_ITEM, "items/9mmclip1.wav", 1, ATTN_NORM);
-			return true;
-		}
-		return false;
-	}
+    void Spawn() override{
+        self.pev.spawnflags = 256;
+        CBaseWeaponBaseAmmo::Spawn();
+    }
 }

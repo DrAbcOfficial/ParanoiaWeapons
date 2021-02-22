@@ -4,6 +4,7 @@ class weapon_rpk : CBaseParanoiaWeapon{
         szPModel = "models/paranoia/p_rpk.mdl";
         szWModel = "models/paranoia/w_rpk.mdl";
         szShellModel = "models/paranoia/rpk_shell.mdl";
+        szHUDModel = "sprites/paranoia/p_hud7.spr";
 
         szAnimation = "saw";
 

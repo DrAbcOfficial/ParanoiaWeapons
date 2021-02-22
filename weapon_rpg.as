@@ -3,6 +3,7 @@ class weapon_paranoia_rpg : CBaseParanoiaWeapon{
         szVModel = "models/paranoia/v_rpg.mdl";
         szPModel = "models/paranoia/p_rpg.mdl";
         szWModel = "models/paranoia/w_rpg.mdl";
+        szHUDModel = "sprites/paranoia/p_hud8.spr";
 
         szAnimation = "rpg";
         szSniperAnimation = "rpg";
@@ -21,7 +22,7 @@ class weapon_paranoia_rpg : CBaseParanoiaWeapon{
         iDefaultGive = 2;
         iMaxAmmo1 = 5;
         iMaxClip = 1;
-        iSlot = 6;
+        iSlot = 7;
         iPosition = 6;
         iFlag = 0;
         iWeight = 10;
@@ -58,6 +59,7 @@ class weapon_paranoia_rpg : CBaseParanoiaWeapon{
         g_Game.PrecacheModel( szWModel );
 		g_Game.PrecacheModel( szVModel );
 		g_Game.PrecacheModel( szPModel );
+        g_Game.PrecacheModel( szHUDModel );
 
 		for(uint i = 0; i < aryFireSound.length(); i++){
             g_SoundSystem.PrecacheSound( aryFireSound[i] );

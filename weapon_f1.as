@@ -9,6 +9,7 @@ class weapon_f1 : CBaseParanoiaWeapon
         szPModel = "models/paranoia/p_grenade.mdl";
         szWModel = "models/paranoia/w_grenadeammo.mdl";
         szShellModel = "models/paranoia/w_grenade.mdl";
+        szHUDModel = "sprites/paranoia/p_hud7.spr";
 
         szAnimation = "gren";
 

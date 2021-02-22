@@ -4,6 +4,7 @@ class weapon_painkiller : CBaseParanoiaWeapon{
         szSniperAnimation = "medkit";
 
         szWModel = "models/paranoia/w_painkiller.mdl";
+        szHUDModel = "sprites/paranoia/p_hud2.spr";
 
         iDefaultGive = 1;
         iMaxAmmo1 = 5;
@@ -44,6 +45,7 @@ class weapon_painkiller : CBaseParanoiaWeapon{
             g_SoundSystem.PrecacheSound( aryFireSound[i] );
         }
         g_Game.PrecacheModel( szWModel );
+        g_Game.PrecacheModel( szHUDModel );
         g_Game.PrecacheGeneric( "sprites/" + szSprDir + "/" + self.pev.classname + ".txt");
     }
 

@@ -6,6 +6,7 @@ abstract class CBaseParanoiaWeapon: ScriptBasePlayerWeaponEntity{
     protected string szVModel = "";
     protected string szPModel = "";
     protected string szWModel = "";
+    protected string szHUDModel = "";
     protected string szShellModel = "";
     protected string szAnimation = "";
     protected string szSniperAnimation = "sniperscope";
@@ -78,6 +79,8 @@ abstract class CBaseParanoiaWeapon: ScriptBasePlayerWeaponEntity{
 		g_Game.PrecacheModel( szVModel );
 		g_Game.PrecacheModel( szPModel );
 
+        g_Game.PrecacheModel( szHUDModel );
+
         if(!szShellModel.IsEmpty())
 		    iShell = g_Game.PrecacheModel( szShellModel );
 
@@ -128,6 +131,7 @@ abstract class CBaseParanoiaWeapon: ScriptBasePlayerWeaponEntity{
 		pPlayer.SetMaxSpeedOverride(-1);
 		SetThink( null );
 		ToggleZoom( 0 );
+        pPlayer.pev.viewmodel = "";
 		BaseClass.Holster( skipLocal );
 	}
 

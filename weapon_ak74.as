@@ -3,6 +3,7 @@ class weapon_ak74 : CBaseParanoiaWeapon{
         szVModel = "models/paranoia/v_ak74.mdl";
         szPModel = "models/paranoia/p_ak74.mdl";
         szWModel = "models/paranoia/w_ak74.mdl";
+        szHUDModel = "sprites/paranoia/p_hud4.spr";
         szShellModel = "models/paranoia/ak74_shell.mdl";
 
         szAnimation = "mp5";

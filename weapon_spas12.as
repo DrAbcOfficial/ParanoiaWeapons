@@ -4,6 +4,7 @@ class weapon_spas12 : CBaseParanoiaWeapon{
         szPModel = "models/paranoia/p_spas12.mdl";
         szWModel = "models/paranoia/w_spas12.mdl";
         szShellModel = "models/paranoia/spas12_shell.mdl";
+        szHUDModel = "sprites/paranoia/p_hud5.spr";
 
         szAnimation = "shotgun";
 
@@ -19,7 +20,7 @@ class weapon_spas12 : CBaseParanoiaWeapon{
         iDefaultGive = 24;
         iMaxAmmo1 = 48;
         iMaxClip = 8;
-        iSlot = 3;
+        iSlot = 4;
         iPosition = 11;
         iFlag = 0;
         iWeight = 4;

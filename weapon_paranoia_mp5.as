@@ -4,6 +4,7 @@ class weapon_paranoia_mp5 : CBaseParanoiaWeapon{
         szPModel = "models/paranoia/p_9mmar.mdl";
         szWModel = "models/paranoia/w_9mmar.mdl";
         szShellModel = "models/paranoia/glock_shell.mdl";
+        szHUDModel = "sprites/paranoia/p_hud3.spr";
 
         szAnimation = "mp5";
 

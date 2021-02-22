@@ -4,6 +4,7 @@ class weapon_val : CBaseParanoiaWeapon{
         szPModel = "models/paranoia/p_val.mdl";
         szWModel = "models/paranoia/w_val.mdl";
         szShellModel = "models/paranoia/val_shell.mdl";
+        szHUDModel = "sprites/paranoia/p_hud6.spr";
 
         szAnimation = "sniper";
 

@@ -16,10 +16,6 @@
 #include "weapon_flashbattery"
 
 void WeaponRegister(){
-    for(uint i = 1; i <= 8; i++){
-        g_Game.PrecacheModel( "sprites/paranoia/p_hud" + i + ".spr" );
-    }
-
     ParanoiaAmmoRegister("ammo_ak74", "ammo_ak74");
     ParanoiaAmmoRegister("ammo_ak74ammobox", "ammo_ak74ammobox");
     ParanoiaAmmoRegister("ammo_aks", "ammo_aks");
