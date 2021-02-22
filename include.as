@@ -39,11 +39,12 @@ void WeaponRegister(){
     ParanoiaAmmoRegister("ammo_valammobox", "ammo_valammobox");
     ParanoiaAmmoRegister("ammo_paranoia_rpg", "ammo_paranoia_rpg");
     ParanoiaAmmoRegister("ammo_f1", "ammo_f1");
+    ParanoiaAmmoRegister("ammo_droppedf1", "ammo_droppedf1");
     ParanoiaAmmoRegister("ammo_painkiller", "ammo_painkiller");
     ParanoiaAmmoRegister("ammo_flashbattery", "ammo_flashbattery");
 
     ParanoiaWeaponRegister("weapon_ak74", "weapon_ak74", "7Н6", "ammo_ak74");
-    ParanoiaWeaponRegister("weapon_f1", "weapon_f1", "f1", "ammo_f1");
+    ParanoiaWeaponRegister("weapon_f1", "weapon_f1", "f1", "ammo_droppedf1");
     ParanoiaWeaponRegister("weapon_aks", "weapon_aks", "7Н6", "ammo_aks");
     ParanoiaWeaponRegister("weapon_rpk", "weapon_rpk", "57-Н-323С", "ammo_rpk");
     ParanoiaWeaponRegister("weapon_aps", "weapon_aps", "57-Н-181", "ammo_aps");

@@ -17,17 +17,21 @@ class weapon_painkiller : CBaseParanoiaWeapon{
     }
 
     bool Deploy(){
-        g_PlayerFuncs.ScreenFade(pPlayer, Vector(124,225,251), 0.3, 0, 255, FFADE_IN | FFADE_MODULATE);
-        pPlayer.TakeHealth(7, DMG_MEDKITHEAL);
-        pPlayer.m_bitsDamageType &= ~DMG_TIMEBASED;
-        pPlayer.m_rgAmmo( self.m_iPrimaryAmmoType, pPlayer.m_rgAmmo(self.m_iPrimaryAmmoType) - 1 );
-        g_SoundSystem.EmitSoundDyn( self.edict(), CHAN_ITEM, aryFireSound[0], 1.0, ATTN_NORM, 0, 95 + Math.RandomLong( 0, 10 ) );
+        if(pPlayer.pev.health >= pPlayer.pev.max_health && pPlayer.m_bitsDamageType & DMG_TIMEBASED == 0)
+            g_PlayerFuncs.ClientPrint(pPlayer, HUD_PRINTCENTER, "Your don't need to heal yourself yet!\n");
+        else{
+            g_PlayerFuncs.ScreenFade(pPlayer, Vector(124,225,251), 0.3, 0, 255, FFADE_IN | FFADE_MODULATE);
+            pPlayer.TakeHealth(7, DMG_MEDKITHEAL);
+            pPlayer.m_bitsDamageType &= ~DMG_TIMEBASED;
+            pPlayer.m_rgAmmo( self.m_iPrimaryAmmoType, pPlayer.m_rgAmmo(self.m_iPrimaryAmmoType) - 1 );
+            g_SoundSystem.EmitSoundDyn( self.edict(), CHAN_ITEM, aryFireSound[0], 1.0, ATTN_NORM, 0, 95 + Math.RandomLong( 0, 10 ) );
+            if(pPlayer.m_rgAmmo(self.m_iPrimaryAmmoType) <= 0){
+                pPlayer.pev.weapons &= ~(1<<WEAPON_HANDGRENADE);
+                SetThink( ThinkFunction(DestroyItem) );
+                pev.nextthink = g_Engine.time + 0.1f;
+            }
+        }
         pPlayer.SelectLastItem();
-        if(pPlayer.m_rgAmmo(self.m_iPrimaryAmmoType) <= 0){
-			pPlayer.pev.weapons &= ~(1<<WEAPON_HANDGRENADE);
-			SetThink( ThinkFunction(DestroyItem) );
-			pev.nextthink = g_Engine.time + 0.1f;
-		}
         return false;
 	}
 

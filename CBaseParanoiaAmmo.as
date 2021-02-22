@@ -192,6 +192,15 @@ class ammo_paranoia_rpg : CBaseParanoiaAmmo{
     }
 }
 
+class ammo_droppedf1 : CBaseParanoiaAmmo{
+    ammo_droppedf1(){
+        szModel = "models/paranoia/w_grenadeammo.mdl";
+        szAmmo = "f1";
+        iGive = 1;
+        iMax = 5;
+    }
+}
+
 class ammo_f1 : CBaseParanoiaAmmo{
     ammo_f1(){
         szModel = "models/paranoia/w_grenadeammo.mdl";

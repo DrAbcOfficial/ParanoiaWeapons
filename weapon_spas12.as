@@ -47,7 +47,7 @@ class weapon_spas12 : CBaseParanoiaWeapon{
         aryIronIdleAnimation = {9};
 
         aryFireSound = {"weapons/paranoia/spas12-1.wav", "weapons/paranoia/spas12-1.wav"};
-        aryOtherSound = {"weapons/paranoia/spas12_insertshell.wav"};
+        aryOtherSound = {"weapons/paranoia/spas12_insertshell.wav", "weapons/paranoia/spas12_pump.wav"};
     }
 
     private int iInsertAnimation = 3;

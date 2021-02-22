@@ -25,6 +25,7 @@ array<ItemMapping@> g_ItemMappings = {
     ItemMapping( "ammo_556", "ammo_rpkammobox"),
     ItemMapping( "ammo_556clip", "ammo_rpk"),
     ItemMapping( "ammo_9mmAR" ,"ammo_ak74ammobox"),
+    ItemMapping( "ammo_9mm", "ammo_apsammobox"),
     ItemMapping( "ammo_9mmbox", "ammo_aksammobox"),
     ItemMapping( "ammo_9mmclip", "ammo_apsammobox"),
     ItemMapping( "ammo_buckshot", "ammo_spas12"),
