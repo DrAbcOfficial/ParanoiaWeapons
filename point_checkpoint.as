@@ -247,7 +247,7 @@ class point_checkpoint : ScriptBaseAnimating
 		{
 			self.StudioFrameAdvance();
 			
-			self.pev.renderamt -= 30;
+			self.pev.renderamt -= 4;
 			if ( self.pev.renderamt < 0 )
 				self.pev.renderamt = 0;
 			

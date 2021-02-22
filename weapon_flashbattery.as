@@ -14,7 +14,7 @@ class weapon_flashbattery : CBaseParanoiaWeapon{
         iFlag = 0;
         iWeight = 0;
        
-        aryFireSound = {"itmes/weapondrop1.wav"};
+        aryFireSound = {"itmes/guncock1.wav"};
     }
 
     bool Deploy(){
@@ -51,14 +51,14 @@ class weapon_flashbattery : CBaseParanoiaWeapon{
     }
 
     void PrimaryAttack() override{
-        BaseClass.PrimaryAttack();
+        return;
 	}
 
     void WeaponIdle(){
-        BaseClass.WeaponIdle();
+        return;
     }
     
     void SecondaryAttack() override{
-        BaseClass.SecondaryAttack();
+        return;
 	}
 }

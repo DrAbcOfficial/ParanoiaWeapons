@@ -481,14 +481,144 @@ dictionary dicAddItem = {
     }
 };
 
+class CExtraMonster{
+    private string szPath = "";
+    private string szDisplayName = "";
+    private array<string> aryExtraSound = "";
+    private array<ItemMapping@> aryKeyValue = "";
+
+    float iWeight = 0;
+
+    void Precache(){
+        g_Game.PrecacheModel(szPath);
+        for(uint i = 0; i < aryExtraSound.length(); i++){
+            g_SoundSystem.PrecacheSound(aryExtraSound[i]);
+        }
+    }
+
+    void Set(CBaseEntity@ pEntity){
+        CBaseMonster@ pMonster = cast<CBaseMonster@>(pEntity)
+        if(pMonster !is null){
+            g_EntityFuncs.SetModel(pMonster, this.szPath);
+            pMonster.m_FormattedName = szDisplayName;
+            for(uint i = 0; i < aryKeyValue.length(); i++){
+                pMonster.KeyValue(aryKeyValue[i].get_From(), aryKeyValue[i].get_To());
+            }
+        }
+    }
+
+    CExtraMonster(string _Path, string _Name, float _Weight, array<string> _Extra = {}, array<ItemMapping@> _KVPair = {}){
+        this.szPath = _Path;
+        this.szDisplayName = _Name;
+        this.iWeight = _Weight;
+        this.aryExtraSound = _Extra;
+        this.aryKeyValue = _KVPair;
+    }
+}
+const array<CExtraMonster@> aryExtraZombie = {
+    CExtraMonster(
+        "models/paranoia/zombie_fat.mdl",
+        "Puffy mutants",
+        10,
+        array<string> = {"weapons/paranoia/bes/zo_alert1.wav",
+                        "weapons/paranoia/bes/zo_alert2.wav",
+                        "weapons/paranoia/bes/zo_attack1.wav",
+                        "weapons/paranoia/bes/zo_attack2.wav",
+                        "weapons/paranoia/bes/zo_pain1.wav",
+                        "weapons/paranoia/bes/zo_pain2.wav"},
+        array<ItemMapping@> = {ItemMapping("max_health", "700")}
+    ),
+    CExtraMonster(
+        "models/paranoia/zombie_female.mdl",
+        "Female mutational scientist",
+        40
+    ),
+    CExtraMonster(
+        "models/paranoia/zombie_female.mdl",
+        "Mtational scientist",
+        40
+    ),
+    CExtraMonster(
+        "models/paranoia/zombie_scientist.mdl",
+        "Mtational scientist",
+        40
+    ),
+    CExtraMonster(
+        "models/paranoia/zombie_soldier.mdl",
+        "Mtational soldier",
+        40
+    )
+};
+
+const array<CExtraMonster@> aryExtraMilitaryZombie = {
+    CExtraMonster(
+        "models/paranoia/zombie_himik.mdl",
+        "NP Cleaner zombie",
+        40
+    ),
+    CExtraMonster(
+        "models/paranoia/zombie_rotten.mdl",
+        "Rotten zombie",
+        40
+    )
+};
+
+HookReturnCode EntityCreated( CBaseEntity@ pEntity ){
+    if(pEntity.pev.classname == "monster_zombie"){
+        float flRandom = Math.RandomFloat(0, 1);
+        for(uint i = 0; i < aryExtraZombie.length(); i++){
+            if(flRandom <= aryExtraZombie[i].iWeight){
+                aryExtraZombie[i].Set(@pEntity);
+                break;
+            }
+        }
+    }
+    else if(pEntity.pev.classname == "monster_zombie_soldier"){
+        float flRandom = Math.RandomFloat(0, 1);
+        for(uint i = 0; i < aryExtraMilitaryZombie.length(); i++){
+            if(flRandom <= aryExtraMilitaryZombie[i].iWeight){
+                aryExtraMilitaryZombie[i].Set(@pEntity);
+                break;
+            }
+        }
+    }
+}
+
 
 void MapInit(){
     RegisterPointCheckPointEntity();
     ControllerMapInit();
+
+    //New weapon
     WeaponRegister();
     BatteryHookRegister();
     g_ClassicMode.SetItemMappings( @g_ItemMappings );
     g_ClassicMode.ForceItemRemap( true );
+
+    //Recalculate weights
+    //50 weight for original monster
+    float flTotal = 50;
+    float flTemp = 0;
+    for(uint i = 0; i < aryExtraZombie.length(); i++){
+        flTotal += aryExtraZombie[i].iWeight;
+    }
+    for(uint i = 0; i < aryExtraZombie.length(); i++){
+        aryExtraZombie[i].iWeight = aryExtraZombie[i].iWeight/flTotal + flTemp;
+        flTemp = aryExtraZombie[i].iWeight;
+    }
+
+    flTotal = 50;
+    flTemp = 0;
+    for(uint i = 0; i < aryExtraMilitaryZombie.length(); i++){
+        flTotal += aryExtraMilitaryZombie[i].iWeight;
+    }
+    for(uint i = 0; i < aryExtraMilitaryZombie.length(); i++){
+        aryExtraMilitaryZombie[i].iWeight = aryExtraMilitaryZombie[i].iWeight/flTotal + flTemp;
+        flTemp = aryExtraMilitaryZombie[i].iWeight;
+    }
+
+    //New Monster
+    g_Hooks.RegisterHook(Hooks::Game::EntityCreated, @EntityCreated);
 }
 
 void MapActivate(){
