@@ -76,7 +76,12 @@ HookReturnCode PlayerPostThink( CBasePlayer@ pPlayer )
     return HOOK_CONTINUE;
 }
 
+HookReturnCode PlayerSpawn(CBasePlayer@ pPlayer){
+    aryPlayerBattery[pPlayer.entindex()] = 100;
+    return HOOK_CONTINUE;
+}
 
 void BatteryHookRegister(){
     g_Hooks.RegisterHook(Hooks::Player::PlayerPostThink, @PlayerPostThink);
+    g_Hooks.RegisterHook(Hooks::Player::PlayerSpawn, @PlayerSpawn);
 }
