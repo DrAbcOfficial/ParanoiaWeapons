@@ -51,13 +51,13 @@ class weapon_val : CBaseParanoiaWeapon{
     }
 
     void SecondaryAttack() override{
-		g_PlayerFuncs.ScreenFade(pPlayer, g_vecZero, 0.3, 0, 255, FFADE_IN);
+        g_PlayerFuncs.ScreenFade(pPlayer, g_vecZero, 0.3, 0, 255, FFADE_IN);
         if(!bIron)
             pPlayer.pev.viewmodel = "";
         else
             pPlayer.pev.viewmodel = szVModel;
         CBaseParanoiaWeapon::SecondaryAttack();
-	}
+    }
 
     void Reload() override{
         if(bIron)

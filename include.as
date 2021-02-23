@@ -61,7 +61,7 @@ array<float> aryPlayerBattery(33, 100);
 HookReturnCode PlayerPostThink( CBasePlayer@ pPlayer )
 {
     int i  = pPlayer.entindex();
-	if(pPlayer.FlashlightIsOn()){
+    if(pPlayer.FlashlightIsOn()){
         if(aryPlayerBattery[i] <= 0)
             pPlayer.FlashlightTurnOff();
         else

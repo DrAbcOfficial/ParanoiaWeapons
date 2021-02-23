@@ -68,28 +68,28 @@ abstract class CBaseParanoiaWeapon: ScriptBasePlayerWeaponEntity{
     protected bool bAutoFlag = false;
 
     void Spawn(){
-		Precache();
-		g_EntityFuncs.SetModel(self, szWModel);
-		self.m_iDefaultAmmo = iDefaultGive;
-		self.FallInit();
-	}
+        Precache();
+        g_EntityFuncs.SetModel(self, szWModel);
+        self.m_iDefaultAmmo = iDefaultGive;
+        self.FallInit();
+    }
 
     void Precache(){
-		g_Game.PrecacheModel( szWModel );
+        g_Game.PrecacheModel( szWModel );
         g_Game.PrecacheGeneric( szWModel);
-		g_Game.PrecacheModel( szVModel );
+        g_Game.PrecacheModel( szVModel );
         g_Game.PrecacheGeneric( szVModel);
-		g_Game.PrecacheModel( szPModel );
+        g_Game.PrecacheModel( szPModel );
         g_Game.PrecacheGeneric( szPModel);
 
         g_Game.PrecacheModel( szHUDModel );
         g_Game.PrecacheGeneric( szHUDModel);
 
         if(!szShellModel.IsEmpty())
-		    iShell = g_Game.PrecacheModel( szShellModel );
+            iShell = g_Game.PrecacheModel( szShellModel );
 
         g_SoundSystem.PrecacheSound( szEmptySound );
-		for(uint i = 0; i < aryFireSound.length(); i++){
+        for(uint i = 0; i < aryFireSound.length(); i++){
             g_SoundSystem.PrecacheSound( aryFireSound[i] );
         }
         for(uint i = 0; i < aryOtherSound.length(); i++){
@@ -97,100 +97,100 @@ abstract class CBaseParanoiaWeapon: ScriptBasePlayerWeaponEntity{
         }
 
         g_Game.PrecacheGeneric( "sprites/" + szSprDir + "/" + self.pev.classname + ".txt");
-	}
+    }
 
     bool GetItemInfo( ItemInfo& out info ){
-		info.iMaxAmmo1	= iMaxAmmo1;
-		info.iMaxAmmo2	= iMaxAmmo2;
-		info.iMaxClip	= iMaxClip;
-		info.iSlot		= iSlot;
-		info.iPosition	= iPosition;
-		info.iFlags		= iFlag;
-		info.iWeight	= iWeight;
-		return true;
-	}
+        info.iMaxAmmo1    = iMaxAmmo1;
+        info.iMaxAmmo2    = iMaxAmmo2;
+        info.iMaxClip    = iMaxClip;
+        info.iSlot        = iSlot;
+        info.iPosition    = iPosition;
+        info.iFlags        = iFlag;
+        info.iWeight    = iWeight;
+        return true;
+    }
 
     bool AddToPlayer( CBasePlayer@ pPlayer ){
-		if( BaseClass.AddToPlayer (pPlayer)){
-			@this.pPlayer = pPlayer;
-			NetworkMessage m( MSG_ONE, NetworkMessages::WeapPickup, pPlayer.edict() );
-				m.WriteLong( g_ItemRegistry.GetIdForName(self.pev.classname) );
-			m.End();
-			return true;
-		}
-		return false;
-	}
+        if( BaseClass.AddToPlayer (pPlayer)){
+            @this.pPlayer = pPlayer;
+            NetworkMessage m( MSG_ONE, NetworkMessages::WeapPickup, pPlayer.edict() );
+                m.WriteLong( g_ItemRegistry.GetIdForName(self.pev.classname) );
+            m.End();
+            return true;
+        }
+        return false;
+    }
 
     bool PlayEmptySound(){
-		if( self.m_bPlayEmptySound ){
-			self.m_bPlayEmptySound = false;
-			g_SoundSystem.EmitSoundDyn( pPlayer.edict(), CHAN_AUTO, szEmptySound, 0.9, ATTN_NORM, 0, PITCH_NORM );
-		}
-		return false;
-	}
+        if( self.m_bPlayEmptySound ){
+            self.m_bPlayEmptySound = false;
+            g_SoundSystem.EmitSoundDyn( pPlayer.edict(), CHAN_AUTO, szEmptySound, 0.9, ATTN_NORM, 0, PITCH_NORM );
+        }
+        return false;
+    }
 
     void Holster( int skipLocal = 0 ) {
-		self.m_fInReload = false;
-		bIron = false;
-		pPlayer.SetMaxSpeedOverride(-1);
-		SetThink( null );
-		ToggleZoom( 0 );
+        self.m_fInReload = false;
+        bIron = false;
+        pPlayer.SetMaxSpeedOverride(-1);
+        SetThink( null );
+        ToggleZoom( 0 );
         pPlayer.pev.viewmodel = "";
-		BaseClass.Holster( skipLocal );
-	}
+        BaseClass.Holster( skipLocal );
+    }
 
     void SetFOV( int fov ){
-		pPlayer.pev.fov = pPlayer.m_iFOV = fov;
-	}
+        pPlayer.pev.fov = pPlayer.m_iFOV = fov;
+    }
 
     void ToggleZoom( int zoomedFOV ){
-		if (self.m_fInZoom)
-			SetFOV(0);
-		else
-			SetFOV( zoomedFOV );
-	}
+        if (self.m_fInZoom)
+            SetFOV(0);
+        else
+            SetFOV( zoomedFOV );
+    }
 
     bool Deploy(){
-		bool bResult = self.DefaultDeploy ( self.GetV_Model( szVModel ), self.GetP_Model( szPModel ), iDrawAnimation, szAnimation );
-		self.m_flTimeWeaponIdle = self.m_flNextPrimaryAttack = self.m_flNextSecondaryAttack = g_Engine.time + flDeploy;
-		return bResult;
-	}
+        bool bResult = self.DefaultDeploy ( self.GetV_Model( szVModel ), self.GetP_Model( szPModel ), iDrawAnimation, szAnimation );
+        self.m_flTimeWeaponIdle = self.m_flNextPrimaryAttack = self.m_flNextSecondaryAttack = g_Engine.time + flDeploy;
+        return bResult;
+    }
 
     void PrimaryAttack(){
         if(!bCanAutoFire && bAutoFlag){
             return;
         }
 
-		if(self.m_iClip <= 0 ){
-			self.PlayEmptySound();
-			self.m_flNextPrimaryAttack = g_Engine.time + 0.15f;
-			return;
-		}
-		
-		self.m_flTimeWeaponIdle = g_Engine.time + flIdleTime;
+        if(self.m_iClip <= 0 ){
+            self.PlayEmptySound();
+            self.m_flNextPrimaryAttack = g_Engine.time + 0.15f;
+            return;
+        }
+        
+        self.m_flTimeWeaponIdle = g_Engine.time + flIdleTime;
         self.m_flNextPrimaryAttack = self.m_flNextSecondaryAttack = g_Engine.time + flPrimaryTime;
 
-		self.m_iClip--;
+        self.m_iClip--;
         bAutoFlag = true;
-		
-		pPlayer.pev.effects |= EF_MUZZLEFLASH;
-		pPlayer.m_iWeaponVolume = LOUD_GUN_VOLUME;
-		pPlayer.m_iWeaponFlash = BRIGHT_GUN_FLASH;
-		pPlayer.SetAnimation( PLAYER_ATTACK1 );
+        
+        pPlayer.pev.effects |= EF_MUZZLEFLASH;
+        pPlayer.m_iWeaponVolume = LOUD_GUN_VOLUME;
+        pPlayer.m_iWeaponFlash = BRIGHT_GUN_FLASH;
+        pPlayer.SetAnimation( PLAYER_ATTACK1 );
 
         array<int>@ aryAnimation = bIron ? aryIronFireAnimation : aryFireAnimation;
         int iAniIndex = self.m_iClip != 0 && aryAnimation.length() > 1 ? g_PlayerFuncs.SharedRandomLong(pPlayer.random_seed, 0, aryAnimation.length()-2) : aryAnimation.length() - 1;
         self.SendWeaponAnim(aryAnimation[iAniIndex], 0, 0);
 
-		g_SoundSystem.EmitSoundDyn( pPlayer.edict(), CHAN_WEAPON, 
+        g_SoundSystem.EmitSoundDyn( pPlayer.edict(), CHAN_WEAPON, 
             aryFireSound[g_PlayerFuncs.SharedRandomLong(pPlayer.random_seed, 0, aryFireSound.length() - 1)], 
             0.9, ATTN_NORM, 0, PITCH_NORM );
-		
-		Vector vecSrc = pPlayer.GetGunPosition();
-		Vector vecAiming = pPlayer.GetAutoaimVector( AUTOAIM_5DEGREES );
+        
+        Vector vecSrc = pPlayer.GetGunPosition();
+        Vector vecAiming = pPlayer.GetAutoaimVector( AUTOAIM_5DEGREES );
         Vector vecAcc = bIron ? vecIronAccurency : vecAccurency;
 
-		pPlayer.FireBullets(1, vecSrc, vecAiming, vecAcc, 8192, BULLET_PLAYER_CUSTOMDAMAGE, 2, iDamage + int(Math.RandomFloat(vecDamageDrift.x, vecDamageDrift.y)));
+        pPlayer.FireBullets(1, vecSrc, vecAiming, vecAcc, 8192, BULLET_PLAYER_CUSTOMDAMAGE, 2, iDamage + int(Math.RandomFloat(vecDamageDrift.x, vecDamageDrift.y)));
 
         NetworkMessage m(MSG_BROADCAST, NetworkMessages::SVC_TEMPENTITY, null);
             m.WriteByte(TE_DLIGHT);
@@ -205,30 +205,30 @@ abstract class CBaseParanoiaWeapon: ScriptBasePlayerWeaponEntity{
             m.WriteByte(255);
         m.End();
 
-		if( self.m_iClip == 0 && pPlayer.m_rgAmmo( self.m_iPrimaryAmmoType ) <= 0 )
-			pPlayer.SetSuitUpdate( "!HEV_AMO0", false, 0 );
-		
-		pPlayer.pev.punchangle.x += Math.RandomFloat( vec2XPunch.x, vec2XPunch.y );
-        pPlayer.pev.punchangle.y += Math.RandomFloat( vec2YPunch.x, vec2YPunch.y );
-	
-		TraceResult tr;
-		float x, y;
-		g_Utility.GetCircularGaussianSpread( x, y );
-		Vector vecEnd = vecSrc + (vecAiming + x * vecAcc.x * g_Engine.v_right + y * vecAcc.y * g_Engine.v_up) * 8192;
-		g_Utility.TraceLine( vecSrc, vecEnd, dont_ignore_monsters, pPlayer.edict(), tr );
+        if( self.m_iClip == 0 && pPlayer.m_rgAmmo( self.m_iPrimaryAmmoType ) <= 0 )
+            pPlayer.SetSuitUpdate( "!HEV_AMO0", false, 0 );
         
-		if( tr.flFraction < 1.0 ){
-			if( tr.pHit !is null ){
-				CBaseEntity@ pHit = g_EntityFuncs.Instance( tr.pHit );
-				if (pHit is null || pHit.IsBSPModel())
-					g_WeaponFuncs.DecalGunshot( tr, BULLET_PLAYER_MP5 );
+        pPlayer.pev.punchangle.x += Math.RandomFloat( vec2XPunch.x, vec2XPunch.y );
+        pPlayer.pev.punchangle.y += Math.RandomFloat( vec2YPunch.x, vec2YPunch.y );
+    
+        TraceResult tr;
+        float x, y;
+        g_Utility.GetCircularGaussianSpread( x, y );
+        Vector vecEnd = vecSrc + (vecAiming + x * vecAcc.x * g_Engine.v_right + y * vecAcc.y * g_Engine.v_up) * 8192;
+        g_Utility.TraceLine( vecSrc, vecEnd, dont_ignore_monsters, pPlayer.edict(), tr );
+        
+        if( tr.flFraction < 1.0 ){
+            if( tr.pHit !is null ){
+                CBaseEntity@ pHit = g_EntityFuncs.Instance( tr.pHit );
+                if (pHit is null || pHit.IsBSPModel())
+                    g_WeaponFuncs.DecalGunshot( tr, BULLET_PLAYER_MP5 );
                 else if(pHit.IsMonster() && pHit.IRelationship(pPlayer) > R_NO){
                     Vector vecPos = (tr.vecEndPos - vecSrc).Normalize();
                     vecPos.z = 0;
                     pHit.pev.velocity = pHit.pev.velocity + vecPos * flShock + g_Engine.v_up * flShock;
                 }
-			}
-		}
+            }
+        }
 
         Vector vecShellOffset = bIron ? vecIronEjectOrigin : vecEjectOrigin;
         Vector vecShellOrigin = g_Engine.v_right * vecShellOffset.x + g_Engine.v_forward * vecShellOffset.y + g_Engine.v_up * vecShellOffset.z;
@@ -239,60 +239,60 @@ abstract class CBaseParanoiaWeapon: ScriptBasePlayerWeaponEntity{
             pPlayer.pev.angles[1], 
             iShell, 
             iShellSound );
-	}
+    }
     
     void SecondaryAttack(){
-		self.m_flTimeWeaponIdle = self.m_flNextSecondaryAttack = self.m_flNextPrimaryAttack = g_Engine.time + flSccenaryTime;
+        self.m_flTimeWeaponIdle = self.m_flNextSecondaryAttack = self.m_flNextPrimaryAttack = g_Engine.time + flSccenaryTime;
         if(bIron){
             self.SendWeaponAnim(iReChangeAnimation, 0, 0);
             pPlayer.SetMaxSpeedOverride(-1);
-			ToggleZoom( 0 );
-			pPlayer.m_szAnimExtension = szAnimation;
+            ToggleZoom( 0 );
+            pPlayer.m_szAnimExtension = szAnimation;
         }
         else{
             self.SendWeaponAnim(iChangeAnimation, 0, 0);
             pPlayer.SetMaxSpeedOverride(iMoveSpeed);
-			ToggleZoom( iFOV );
-			pPlayer.m_szAnimExtension = szSniperAnimation;
+            ToggleZoom( iFOV );
+            pPlayer.m_szAnimExtension = szSniperAnimation;
         }
         bIron = !bIron;
-	}
+    }
 
     void FinishReload(){
         if(bIron){
-			ToggleZoom( iFOV );
-			pPlayer.m_szAnimExtension = szSniperAnimation;
+            ToggleZoom( iFOV );
+            pPlayer.m_szAnimExtension = szSniperAnimation;
         }
         BaseClass.FinishReload();
     }
 
     void Reload(){
-		if( self.m_iClip >= iMaxClip || pPlayer.m_rgAmmo( self.m_iPrimaryAmmoType ) <= 0)
-			return;
+        if( self.m_iClip >= iMaxClip || pPlayer.m_rgAmmo( self.m_iPrimaryAmmoType ) <= 0)
+            return;
 
         if(bIron){
-			ToggleZoom( 0 );
-			pPlayer.m_szAnimExtension = szAnimation;
+            ToggleZoom( 0 );
+            pPlayer.m_szAnimExtension = szAnimation;
         }
         pPlayer.SetAnimation(PLAYER_RELOAD);
-		self.DefaultReload( iMaxClip, bIron ? iIronReloadAnimation : iReloadAnimation,  bIron ? flIronReloadTime : flReloadTime, 0 );
-	}
+        self.DefaultReload( iMaxClip, bIron ? iIronReloadAnimation : iReloadAnimation,  bIron ? flIronReloadTime : flReloadTime, 0 );
+    }
 
     void WeaponIdle(){
-		self.ResetEmptySound();
+        self.ResetEmptySound();
         if(bAutoFlag)
             bAutoFlag = false;
-		if( self.m_flTimeWeaponIdle > g_Engine.time )
-			return;
+        if( self.m_flTimeWeaponIdle > g_Engine.time )
+            return;
         array<int>@ aryAnimation = bIron ? aryIronIdleAnimation : aryIdleAnimation;
-		self.SendWeaponAnim(aryAnimation[Math.RandomLong(0, aryAnimation.length() - 1)]);
-		self.m_flTimeWeaponIdle = g_Engine.time + Math.RandomFloat( 10, 15 );
-	}
+        self.SendWeaponAnim(aryAnimation[Math.RandomLong(0, aryAnimation.length() - 1)]);
+        self.m_flTimeWeaponIdle = g_Engine.time + Math.RandomFloat( 10, 15 );
+    }
 }
 
 void ParanoiaWeaponRegister(string szClassName, string szWeaponName, string szAmmoName, string szAmmoClass = "", string szAmmo2Name = "")
 {
-	g_CustomEntityFuncs.RegisterCustomEntity( szClassName, szWeaponName );
-	g_ItemRegistry.RegisterWeapon( szWeaponName, szSprDir, szAmmoName, szAmmo2Name, szAmmoClass);
+    g_CustomEntityFuncs.RegisterCustomEntity( szClassName, szWeaponName );
+    g_ItemRegistry.RegisterWeapon( szWeaponName, szSprDir, szAmmoName, szAmmo2Name, szAmmoClass);
     g_Game.PrecacheOther(szWeaponName);
 }

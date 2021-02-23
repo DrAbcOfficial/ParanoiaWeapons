@@ -63,7 +63,7 @@ class weapon_spas12 : CBaseParanoiaWeapon{
     private int iPellet = 8;
 
     void ItemPostFrame(){
-		if( flPumpNextTime != 0 && flPumpNextTime < g_Engine.time && bShouldPump ){
+        if( flPumpNextTime != 0 && flPumpNextTime < g_Engine.time && bShouldPump ){
             Vector vecShellOffset = bIron ? vecIronEjectOrigin : vecEjectOrigin;
             Vector vecShellOrigin = g_Engine.v_right * vecShellOffset.x + g_Engine.v_forward * vecShellOffset.y + g_Engine.v_up * vecShellOffset.z;
 
@@ -73,46 +73,46 @@ class weapon_spas12 : CBaseParanoiaWeapon{
                 pPlayer.pev.angles[1], 
                 iShell, 
                 iShellSound );
-			bShouldPump = false;
-		}
-		BaseClass.ItemPostFrame();
-	}
+            bShouldPump = false;
+        }
+        BaseClass.ItemPostFrame();
+    }
 
     void PrimaryAttack() override{
         if(!bCanAutoFire && bAutoFlag){
             return;
         }
 
-		if(self.m_iClip <= 0 ){
-			self.PlayEmptySound();
-			self.m_flNextPrimaryAttack = g_Engine.time + 0.15f;
-			return;
-		}
-		
-		self.m_flTimeWeaponIdle = g_Engine.time + flIdleTime;
+        if(self.m_iClip <= 0 ){
+            self.PlayEmptySound();
+            self.m_flNextPrimaryAttack = g_Engine.time + 0.15f;
+            return;
+        }
+        
+        self.m_flTimeWeaponIdle = g_Engine.time + flIdleTime;
         self.m_flNextPrimaryAttack = self.m_flNextSecondaryAttack = g_Engine.time + flPrimaryTime;
 
-		self.m_iClip--;
+        self.m_iClip--;
         bAutoFlag = true;
-		
-		pPlayer.pev.effects |= EF_MUZZLEFLASH;
-		pPlayer.m_iWeaponVolume = LOUD_GUN_VOLUME;
-		pPlayer.m_iWeaponFlash = BRIGHT_GUN_FLASH;
-		pPlayer.SetAnimation( PLAYER_ATTACK1 );
+        
+        pPlayer.pev.effects |= EF_MUZZLEFLASH;
+        pPlayer.m_iWeaponVolume = LOUD_GUN_VOLUME;
+        pPlayer.m_iWeaponFlash = BRIGHT_GUN_FLASH;
+        pPlayer.SetAnimation( PLAYER_ATTACK1 );
 
         array<int>@ aryAnimation = bIron ? aryIronFireAnimation : aryFireAnimation;
         int iAniIndex = self.m_iClip != 0 && aryAnimation.length() > 1 ? g_PlayerFuncs.SharedRandomLong(pPlayer.random_seed, 0, aryAnimation.length()-2) : aryAnimation.length() - 1;
         self.SendWeaponAnim(aryAnimation[iAniIndex], 0, 0);
 
-		g_SoundSystem.EmitSoundDyn( pPlayer.edict(), CHAN_WEAPON, 
+        g_SoundSystem.EmitSoundDyn( pPlayer.edict(), CHAN_WEAPON, 
             aryFireSound[g_PlayerFuncs.SharedRandomLong(pPlayer.random_seed, 0, aryFireSound.length() - 1)], 
             0.9, ATTN_NORM, 0, PITCH_NORM );
-		
-		Vector vecSrc = pPlayer.GetGunPosition();
-		Vector vecAiming = pPlayer.GetAutoaimVector( AUTOAIM_5DEGREES );
+        
+        Vector vecSrc = pPlayer.GetGunPosition();
+        Vector vecAiming = pPlayer.GetAutoaimVector( AUTOAIM_5DEGREES );
         Vector vecAcc = bIron ? vecIronAccurency : vecAccurency;
 
-		pPlayer.FireBullets(iPellet, vecSrc, vecAiming, vecAcc, 8192, BULLET_PLAYER_CUSTOMDAMAGE, 2, iDamage + int(Math.RandomFloat(vecDamageDrift.x, vecDamageDrift.y)));
+        pPlayer.FireBullets(iPellet, vecSrc, vecAiming, vecAcc, 8192, BULLET_PLAYER_CUSTOMDAMAGE, 2, iDamage + int(Math.RandomFloat(vecDamageDrift.x, vecDamageDrift.y)));
 
         NetworkMessage m(MSG_BROADCAST, NetworkMessages::SVC_TEMPENTITY, null);
             m.WriteByte(TE_DLIGHT);
@@ -127,10 +127,10 @@ class weapon_spas12 : CBaseParanoiaWeapon{
             m.WriteByte(255);
         m.End();
 
-		if( self.m_iClip == 0 && pPlayer.m_rgAmmo( self.m_iPrimaryAmmoType ) <= 0 )
-			pPlayer.SetSuitUpdate( "!HEV_AMO0", false, 0 );
-		
-		pPlayer.pev.punchangle.x += Math.RandomFloat( vec2XPunch.x, vec2XPunch.y );
+        if( self.m_iClip == 0 && pPlayer.m_rgAmmo( self.m_iPrimaryAmmoType ) <= 0 )
+            pPlayer.SetSuitUpdate( "!HEV_AMO0", false, 0 );
+        
+        pPlayer.pev.punchangle.x += Math.RandomFloat( vec2XPunch.x, vec2XPunch.y );
         pPlayer.pev.punchangle.y += Math.RandomFloat( vec2YPunch.x, vec2YPunch.y );
 
         bShouldPump = true;
@@ -165,59 +165,59 @@ class weapon_spas12 : CBaseParanoiaWeapon{
 
     void Reload() override{
         if( pPlayer.m_rgAmmo( self.m_iPrimaryAmmoType ) <= 0 || self.m_iClip >= iMaxClip )
-			return;
-		if( flReloadNextTime > g_Engine.time )
-			return;
-		if( self.m_flNextPrimaryAttack > g_Engine.time && !bShouldReload )
-			return;
-		if(bShouldReload){
-			if( self.m_iClip >= iMaxClip ){
-				bShouldReload = false;
-				return;
-			}
-			self.SendWeaponAnim( iInsertAnimation, 0 );
-			flReloadNextTime = self.m_flTimeWeaponIdle = g_Engine.time + flInsertReloadTime;
-			self.m_iClip++;
-			pPlayer.m_rgAmmo( self.m_iPrimaryAmmoType, pPlayer.m_rgAmmo( self.m_iPrimaryAmmoType ) - 1 );
+            return;
+        if( flReloadNextTime > g_Engine.time )
+            return;
+        if( self.m_flNextPrimaryAttack > g_Engine.time && !bShouldReload )
+            return;
+        if(bShouldReload){
+            if( self.m_iClip >= iMaxClip ){
+                bShouldReload = false;
+                return;
+            }
+            self.SendWeaponAnim( iInsertAnimation, 0 );
+            flReloadNextTime = self.m_flTimeWeaponIdle = g_Engine.time + flInsertReloadTime;
+            self.m_iClip++;
+            pPlayer.m_rgAmmo( self.m_iPrimaryAmmoType, pPlayer.m_rgAmmo( self.m_iPrimaryAmmoType ) - 1 );
             pPlayer.SetAnimation(PLAYER_RELOAD);
-		}
-		else{
+        }
+        else{
             if(bIron){
                 ToggleZoom( 0 );
                 pPlayer.m_szAnimExtension = szAnimation;
             }
             self.SendWeaponAnim( bIron ? iIronReloadAnimation : iReloadAnimation, 0, 0 );
             pPlayer.m_flNextAttack = (bIron ? flIronReloadTime : flReloadTime);
-			self.m_flTimeWeaponIdle = g_Engine.time + (bIron ? flIronReloadTime : flReloadTime);
+            self.m_flTimeWeaponIdle = g_Engine.time + (bIron ? flIronReloadTime : flReloadTime);
             self.m_flNextPrimaryAttack = self.m_flNextSecondaryAttack = g_Engine.time + (bIron ? flIronReloadTime : flReloadTime)  + 0.1;
-			bShouldReload = true;
+            bShouldReload = true;
             pPlayer.SetAnimation(PLAYER_RELOAD);
-			return;
-		}
+            return;
+        }
     }
 
     void WeaponIdle() override{
-		self.ResetEmptySound();
-		if( self.m_flTimeWeaponIdle < g_Engine.time ){
-			if( self.m_iClip <= 0 && !bShouldReload && pPlayer.m_rgAmmo( self.m_iPrimaryAmmoType ) != 0 )
-				self.Reload();
-			else if(bShouldReload){
-				if( self.m_iClip < iMaxClip && pPlayer.m_rgAmmo( self.m_iPrimaryAmmoType ) > 0)
-					self.Reload();
-				else{
-					self.SendWeaponAnim( bIron ? iIronAfterReloadAnimation : iAfterReloadAnimation, 0, 0 );
-					bShouldReload = false;
+        self.ResetEmptySound();
+        if( self.m_flTimeWeaponIdle < g_Engine.time ){
+            if( self.m_iClip <= 0 && !bShouldReload && pPlayer.m_rgAmmo( self.m_iPrimaryAmmoType ) != 0 )
+                self.Reload();
+            else if(bShouldReload){
+                if( self.m_iClip < iMaxClip && pPlayer.m_rgAmmo( self.m_iPrimaryAmmoType ) > 0)
+                    self.Reload();
+                else{
+                    self.SendWeaponAnim( bIron ? iIronAfterReloadAnimation : iAfterReloadAnimation, 0, 0 );
+                    bShouldReload = false;
                      if(bIron){
                         ToggleZoom( iFOV );
                         pPlayer.m_szAnimExtension = szSniperAnimation;
                     }
-					self.m_flTimeWeaponIdle = g_Engine.time + 1.5;
-				}
-			}
-			else{
+                    self.m_flTimeWeaponIdle = g_Engine.time + 1.5;
+                }
+            }
+            else{
                 array<int>@ aryAnimation = bIron ? aryIronIdleAnimation : aryIdleAnimation;
                 self.SendWeaponAnim( aryAnimation[Math.RandomLong(0, aryAnimation.length() - 1)], 0, 0 );
             }
-		}
-	}
+        }
+    }
 }

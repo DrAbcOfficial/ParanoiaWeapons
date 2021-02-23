@@ -3,26 +3,26 @@ abstract class CBaseParanoiaAmmo : ScriptBasePlayerAmmoEntity{
     protected string szAmmo = "";
     protected int iGive = 0;
     protected int iMax = 0;
-	void Spawn(){ 
-		Precache();
-		g_EntityFuncs.SetModel( self, szModel );
-		BaseClass.Spawn();
-		g_EntityFuncs.SetSize(self.pev, Vector( -4, -4, -1 ), Vector( 4, 4, 1 ));
-	}
-	
-	void Precache(){
-		BaseClass.Precache();
-		g_Game.PrecacheModel( szModel );
-		g_SoundSystem.PrecacheSound("items/9mmclip1.wav");
-	}
-	
-	bool AddAmmo( CBaseEntity@ pOther ) { 
-		if (pOther.GiveAmmo( iGive, szAmmo, iMax ) != -1){
-			g_SoundSystem.EmitSound( self.edict(), CHAN_ITEM, "items/9mmclip1.wav", 1, ATTN_NORM);
-			return true;
-		}
-		return false;
-	}
+    void Spawn(){ 
+        Precache();
+        g_EntityFuncs.SetModel( self, szModel );
+        BaseClass.Spawn();
+        g_EntityFuncs.SetSize(self.pev, Vector( -4, -4, -1 ), Vector( 4, 4, 1 ));
+    }
+    
+    void Precache(){
+        BaseClass.Precache();
+        g_Game.PrecacheModel( szModel );
+        g_SoundSystem.PrecacheSound("items/9mmclip1.wav");
+    }
+    
+    bool AddAmmo( CBaseEntity@ pOther ) { 
+        if (pOther.GiveAmmo( iGive, szAmmo, iMax ) != -1){
+            g_SoundSystem.EmitSound( self.edict(), CHAN_ITEM, "items/9mmclip1.wav", 1, ATTN_NORM);
+            return true;
+        }
+        return false;
+    }
 }
 
 void ParanoiaAmmoRegister(string szClassName, string szName){
@@ -209,12 +209,12 @@ abstract class CBaseWeaponBaseAmmo : CBaseParanoiaAmmo{
             pPlayer.GiveNamedItem(szWeaponName);
             return true;
         }
-		else if (pOther.GiveAmmo( iGive, szAmmo, iMax ) != -1){
-			g_SoundSystem.EmitSound( self.edict(), CHAN_ITEM, "items/9mmclip1.wav", 1, ATTN_NORM);
-			return true;
-		}
-		return false;
-	}
+        else if (pOther.GiveAmmo( iGive, szAmmo, iMax ) != -1){
+            g_SoundSystem.EmitSound( self.edict(), CHAN_ITEM, "items/9mmclip1.wav", 1, ATTN_NORM);
+            return true;
+        }
+        return false;
+    }
 }
 
 class ammo_f1 : CBaseWeaponBaseAmmo{

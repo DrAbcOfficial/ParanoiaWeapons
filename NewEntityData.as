@@ -35,8 +35,8 @@ dictionary dicAddItem = {
             }),
             CMapAddItem("ammo_flashbattery", array<Vector> = {
                 Vector(564, -1939, -375),
-				Vector(599, -1932, -375),
-				Vector(-489, -603, -638)
+                Vector(599, -1932, -375),
+                Vector(-489, -603, -638)
             })
         }
     },
@@ -101,7 +101,7 @@ dictionary dicAddItem = {
                 Vector(-262, -2268, -380),
                 Vector(1295, -1509, -414),
                 Vector(1172, -2100, -1419),
-				Vector(1242, -2112, -1419)
+                Vector(1242, -2112, -1419)
 
             }),
             CMapAddItem("ammo_painkiller", array<Vector> = {
@@ -116,14 +116,14 @@ dictionary dicAddItem = {
         array<CMapAddItem@> = {
             CMapAddItem("ammo_painkiller", array<Vector> = {
                 Vector(-1601, 1637, 180),
-				Vector(-1601, 1567, 180),
-				Vector(-238, 222, 128),
-				Vector(-228, 187, 128),
-				Vector(-1349, 1565, 244),
-				Vector(592, 3496, 514),
-				Vector(1663, 3570, 514),
-				Vector(1332, 439, 163),
-				Vector(1337, 464, 163)
+                Vector(-1601, 1567, 180),
+                Vector(-238, 222, 128),
+                Vector(-228, 187, 128),
+                Vector(-1349, 1565, 244),
+                Vector(592, 3496, 514),
+                Vector(1663, 3570, 514),
+                Vector(1332, 439, 163),
+                Vector(1337, 464, 163)
             }),
             CMapAddItem("ammo_flashbattery", array<Vector> = {
                 Vector(-1311, 1622, 244),
@@ -132,10 +132,10 @@ dictionary dicAddItem = {
             }),
             CMapAddItem("ammo_spas12", array<Vector> = {
                 Vector(-1158, 1515, 244),
-				Vector(-1154, 1552, 244),
-				Vector(1600, 3660, 514),
-				Vector(-839, -1455, 156),
-				Vector(-839, -1523, 156)
+                Vector(-1154, 1552, 244),
+                Vector(1600, 3660, 514),
+                Vector(-839, -1455, 156),
+                Vector(-839, -1523, 156)
 
             }),
             CMapAddItem("ammo_apsammobox", array<Vector> = {
@@ -145,19 +145,19 @@ dictionary dicAddItem = {
             }),
             CMapAddItem("ammo_ak74ammobox", array<Vector> = {
                 Vector(811, 2834, 386),
-				Vector(746, 2830, 386)
+                Vector(746, 2830, 386)
 
             }),
             CMapAddItem("ammo_aksammobox", array<Vector> = {
                 Vector(851, 964, 118),
-				Vector(857, 1000, 145)
+                Vector(857, 1000, 145)
 
             }),
             CMapAddItem("ammo_grozaammobox", array<Vector> = {
                 Vector(1870, 291, 616),
-				Vector(1947, 254, 616),
-				Vector(531, 3557, 514),
-				Vector(541, 3626, 514)
+                Vector(1947, 254, 616),
+                Vector(531, 3557, 514),
+                Vector(541, 3626, 514)
             })
         }
     },
@@ -165,57 +165,57 @@ dictionary dicAddItem = {
         "restriction05",
         array<CMapAddItem@> = {
             CMapAddItem("ammo_painkiller", array<Vector> = {
-            	Vector(-1209, -2765, 198),
-				Vector(-1210, -2815, 198)
+                Vector(-1209, -2765, 198),
+                Vector(-1210, -2815, 198)
 
             }),
             CMapAddItem("ammo_flashbattery", array<Vector> = {
-            	Vector(-2460, -2923, 217)
+                Vector(-2460, -2923, 217)
             }),
             CMapAddItem("ammo_spas12", array<Vector> = {
-            	Vector(-2451, -2934, 217)
+                Vector(-2451, -2934, 217)
 
             }),
             CMapAddItem("weapon_aps", array<Vector> = {
-            	Vector(-1810, -3399, 219)
+                Vector(-1810, -3399, 219)
 
             }),
             CMapAddItem("weapon_aks", array<Vector> = {
-            	Vector(-565, 3286, -519),
-            	Vector(850, 1947, -539),
-				Vector(912, 1938, -539)
+                Vector(-565, 3286, -519),
+                Vector(850, 1947, -539),
+                Vector(912, 1938, -539)
 
             }),
             CMapAddItem("ammo_apsammobox", array<Vector> = {
-            	Vector(-1809, -3436, 219)
+                Vector(-1809, -3436, 219)
 
             }),
             CMapAddItem("ammo_ak74ammobox", array<Vector> = {
                 Vector(-402, -1540, -7),
-				Vector(-357, -1551, -7),
-				Vector(-492, 3210, -539),
-				Vector(-511, 3148, -539)
+                Vector(-357, -1551, -7),
+                Vector(-492, 3210, -539),
+                Vector(-511, 3148, -539)
 
             }),
             CMapAddItem("ammo_aksammobox", array<Vector> = {
-            	Vector(-1224, -1801, 19),
-				Vector(-1254, -1821, 19),
-				Vector(-82, 1122, -543),
-				Vector(-52, 1081, -543),
-				Vector(-94, 1056, -543)
+                Vector(-1224, -1801, 19),
+                Vector(-1254, -1821, 19),
+                Vector(-82, 1122, -543),
+                Vector(-52, 1081, -543),
+                Vector(-94, 1056, -543)
 
             }),
             CMapAddItem("ammo_grozaammobox", array<Vector> = {
-            	Vector(-380, -1749, 39),
-            	Vector(-396, 3123, -539),
-				Vector(-457, 3165, -539),
-				Vector(-81, 1055, -543),
-				Vector(-50, 1052, -543)
+                Vector(-380, -1749, 39),
+                Vector(-396, 3123, -539),
+                Vector(-457, 3165, -539),
+                Vector(-81, 1055, -543),
+                Vector(-50, 1052, -543)
 
             }),
             CMapAddItem("item_healthkit", array<Vector> = {
                 Vector(52, 1532, -396),
-				Vector(-11, 1512, -396)
+                Vector(-11, 1512, -396)
             })
         }
     },
@@ -223,47 +223,47 @@ dictionary dicAddItem = {
         "restriction06",
         array<CMapAddItem@> = {
             CMapAddItem("ammo_painkiller", array<Vector> = {
-            	Vector(658, 1140, -1132),
-            	Vector(-570, 1410, -1092),
-				Vector(-497, 1416, -1092),
-				Vector(-934, -214, -1131),
-				Vector(-934, -167, -1131)
+                Vector(658, 1140, -1132),
+                Vector(-570, 1410, -1092),
+                Vector(-497, 1416, -1092),
+                Vector(-934, -214, -1131),
+                Vector(-934, -167, -1131)
             }),
             CMapAddItem("ammo_flashbattery", array<Vector> = {
-            	Vector(657, 1195, -1132),
-				Vector(657, 1233, -1132),
-				Vector(-1018, -154, -1131)
+                Vector(657, 1195, -1132),
+                Vector(657, 1233, -1132),
+                Vector(-1018, -154, -1131)
 
             }),
             CMapAddItem("ammo_spas12", array<Vector> = {
-            	Vector(-512, 1476, -1092)
+                Vector(-512, 1476, -1092)
             }),
             CMapAddItem("ammo_apsammobox", array<Vector> = {
-            	Vector(-544, 1456, -1092),
-				Vector(-558, 1451, -1092),
-				Vector(-1035, -273, -1131)
+                Vector(-544, 1456, -1092),
+                Vector(-558, 1451, -1092),
+                Vector(-1035, -273, -1131)
             }),
             CMapAddItem("ammo_ak74ammobox", array<Vector> = {
                 Vector(2634, -1289, -1383),
-				Vector(2634, -1342, -1383)
+                Vector(2634, -1342, -1383)
             }),
             CMapAddItem("ammo_aksammobox", array<Vector> = {
-            	Vector(-1100, -276, -1131),
-				Vector(-1056, -350, -1131),
-				Vector(279, 2199, -1491),
-				Vector(243, 2173, -1491),
-				Vector(208, 2168, -1491)
+                Vector(-1100, -276, -1131),
+                Vector(-1056, -350, -1131),
+                Vector(279, 2199, -1491),
+                Vector(243, 2173, -1491),
+                Vector(208, 2168, -1491)
             }),
             CMapAddItem("ammo_grozaammobox", array<Vector> = {
-            	Vector(562, 1049, -1131),
-				Vector(635, 1079, -1132),
-				Vector(-1113, -273, -1131),
-				Vector(-1085, -317, -1131),
-				Vector(2633, -1160, -1383)
+                Vector(562, 1049, -1131),
+                Vector(635, 1079, -1132),
+                Vector(-1113, -273, -1131),
+                Vector(-1085, -317, -1131),
+                Vector(2633, -1160, -1383)
             }),
             CMapAddItem("item_healthkit", array<Vector> = {
-               	Vector(2382, -1336, -1380),
-				Vector(2394, -1310, -1380)
+                   Vector(2382, -1336, -1380),
+                Vector(2394, -1310, -1380)
             })
         }
     },
@@ -271,35 +271,35 @@ dictionary dicAddItem = {
         "restriction07",
         array<CMapAddItem@> = {
             CMapAddItem("ammo_painkiller", array<Vector> = {
-            	Vector(-595, 749, -1902),
-				Vector(-595, 702, -1929),
-				Vector(-2262, 1876, -3667),
-				Vector(-2320, 1876, -3667)
+                Vector(-595, 749, -1902),
+                Vector(-595, 702, -1929),
+                Vector(-2262, 1876, -3667),
+                Vector(-2320, 1876, -3667)
             }),
             CMapAddItem("ammo_flashbattery", array<Vector> = {
-            	Vector(-775, 871, -1924),
-				Vector(-775, 849, -1924),
-				Vector(-986, 411, -1663),
-				Vector(-929, 411, -1663),
-				Vector(-2247, 2043, -3667),
-				Vector(-2289, 2043, -3667)
+                Vector(-775, 871, -1924),
+                Vector(-775, 849, -1924),
+                Vector(-986, 411, -1663),
+                Vector(-929, 411, -1663),
+                Vector(-2247, 2043, -3667),
+                Vector(-2289, 2043, -3667)
             }),
             CMapAddItem("ammo_f1", array<Vector> = {
-            	Vector(-778, 862, -1924)
+                Vector(-778, 862, -1924)
             }),
 
             CMapAddItem("ammo_apsammobox", array<Vector> = {
-            	Vector(-714, 856, -1933),
-				Vector(-682, 854, -1933),
-				Vector(-733, 839, -1933)
+                Vector(-714, 856, -1933),
+                Vector(-682, 854, -1933),
+                Vector(-733, 839, -1933)
             }),
             CMapAddItem("ammo_aksammobox", array<Vector> = {
-            	Vector(-2270, 1951, -3667),
-				Vector(-2290, 1909, -3667)
+                Vector(-2270, 1951, -3667),
+                Vector(-2290, 1909, -3667)
             }),
             CMapAddItem("ammo_grozaammobox", array<Vector> = {
-            	Vector(-839, 852, -1924),
-				Vector(-837, 866, -1924)
+                Vector(-839, 852, -1924),
+                Vector(-837, 866, -1924)
             })
         }
     },
@@ -307,46 +307,46 @@ dictionary dicAddItem = {
         "restriction08",
         array<CMapAddItem@> = {
             CMapAddItem("ammo_painkiller", array<Vector> = {
-            	Vector(-677, 723, 100),
-				Vector(-676, 676, 100)
+                Vector(-677, 723, 100),
+                Vector(-676, 676, 100)
             }),
             CMapAddItem("ammo_flashbattery", array<Vector> = {
-            	Vector(-2503, -691, 116),
-				Vector(-2524, -727, 116),
-				Vector(1342, 158, 136),
-				Vector(1402, 182, 136)
+                Vector(-2503, -691, 116),
+                Vector(-2524, -727, 116),
+                Vector(1342, 158, 136),
+                Vector(1402, 182, 136)
             }),
             CMapAddItem("weapon_val", array<Vector> = {
-            	Vector(-427, -2481, -336)
+                Vector(-427, -2481, -336)
             }),
             CMapAddItem("ammo_val", array<Vector> = {
-            	Vector(-390, -2338, -346),
-				Vector(-415, -2312, -346)
+                Vector(-390, -2338, -346),
+                Vector(-415, -2312, -346)
             }),
             CMapAddItem("weapon_paranoia_mp5", array<Vector> = {
-            	Vector(-3403, -82, 116)
+                Vector(-3403, -82, 116)
             }),
             CMapAddItem("ammo_paranoia_mp5ammobox", array<Vector> = {
-            	Vector(-3383, -10, 116),
-				Vector(-3401, 52, 116)
+                Vector(-3383, -10, 116),
+                Vector(-3401, 52, 116)
             }),
             CMapAddItem("ammo_glockammobox", array<Vector> = {
-            	Vector(-686, 633, -159),
-				Vector(-716, 637, -159)
+                Vector(-686, 633, -159),
+                Vector(-716, 637, -159)
             }),
             CMapAddItem("ammo_apsammobox", array<Vector> = {
-            	Vector(-3386, 821, -340),
-				Vector(-3347, 847, -340)
+                Vector(-3386, 821, -340),
+                Vector(-3347, 847, -340)
             }),
             CMapAddItem("ammo_aksammobox", array<Vector> = {
-            	Vector(-3321, 979, -340),
-				Vector(-3284, 1003, -340),
-				Vector(-3269, 971, -340)
+                Vector(-3321, 979, -340),
+                Vector(-3284, 1003, -340),
+                Vector(-3269, 971, -340)
             }),
             CMapAddItem("ammo_grozaammobox", array<Vector> = {
-            	Vector(-3551, 948, -340),
-				Vector(-3543, 936, -340),
-				Vector(-3577, 918, -340)
+                Vector(-3551, 948, -340),
+                Vector(-3543, 936, -340),
+                Vector(-3577, 918, -340)
             })
         }
     },
@@ -354,38 +354,38 @@ dictionary dicAddItem = {
         "restriction09",
         array<CMapAddItem@> = {
             CMapAddItem("ammo_painkiller", array<Vector> = {
-            	Vector(1418, 2042, 38),
-            	Vector(-798, 1675, -72),
-				Vector(-822, 1644, -72),
-				Vector(-781, 1650, -72)
+                Vector(1418, 2042, 38),
+                Vector(-798, 1675, -72),
+                Vector(-822, 1644, -72),
+                Vector(-781, 1650, -72)
             }),
             CMapAddItem("ammo_flashbattery", array<Vector> = {
-            	Vector(1406, 1871, 78),
-				Vector(1404, 1906, 105)
+                Vector(1406, 1871, 78),
+                Vector(1404, 1906, 105)
             }),
             CMapAddItem("ammo_apsammobox", array<Vector> = {
-            	Vector(-1390, 2355, 55),
-            	Vector(-736, 1619, -72),
-            	Vector(-756, 1579, -72)
+                Vector(-1390, 2355, 55),
+                Vector(-736, 1619, -72),
+                Vector(-756, 1579, -72)
             }),
             CMapAddItem("ammo_spas12", array<Vector> = {
-            	Vector(-1520, 2276, 55),
-				Vector(-1479, 2262, 55),
-				Vector(-1517, 2297, 55)
+                Vector(-1520, 2276, 55),
+                Vector(-1479, 2262, 55),
+                Vector(-1517, 2297, 55)
             }),
             CMapAddItem("ammo_aksammobox", array<Vector> = {
-            	Vector(641, 2642, 99),
-				Vector(678, 2656, 99),
-				Vector(-742, 1557, -72),
-				Vector(-729, 1593, -72),
-				Vector(-683, 1589, -72),
-				Vector(-421, 78, 36),
-				Vector(-476, 65, 36),
-				Vector(-523, 33, 36)
+                Vector(641, 2642, 99),
+                Vector(678, 2656, 99),
+                Vector(-742, 1557, -72),
+                Vector(-729, 1593, -72),
+                Vector(-683, 1589, -72),
+                Vector(-421, 78, 36),
+                Vector(-476, 65, 36),
+                Vector(-523, 33, 36)
             }),
             CMapAddItem("ammo_grozaammobox", array<Vector> = {
-            	Vector(-1361, 2381, 55),
-				Vector(-1408, 2380, 55)
+                Vector(-1361, 2381, 55),
+                Vector(-1408, 2380, 55)
             })
         }
     },
@@ -393,36 +393,36 @@ dictionary dicAddItem = {
         "restriction10",
         array<CMapAddItem@> = {
             CMapAddItem("ammo_painkiller", array<Vector> = {
-            	Vector(198, -1021, 389),
-				Vector(230, -1004, 389),
-				Vector(1322, 508, 582),
-				Vector(1340, 508, 582),
-				Vector(1342, 495, 582)
+                Vector(198, -1021, 389),
+                Vector(230, -1004, 389),
+                Vector(1322, 508, 582),
+                Vector(1340, 508, 582),
+                Vector(1342, 495, 582)
             }),
             CMapAddItem("ammo_flashbattery", array<Vector> = {
-            	Vector(-224, 282, 444),
-				Vector(-288, 282, 444),
-				Vector(1333, 312, 548)
+                Vector(-224, 282, 444),
+                Vector(-288, 282, 444),
+                Vector(1333, 312, 548)
             }),
             CMapAddItem("ammo_apsammobox", array<Vector> = {
-				Vector(178, -1180, 389),
-				Vector(239, -1180, 389),
-				Vector(1505, 442, 548),
-				Vector(1509, 402, 548),
-				Vector(1494, 392, 548)
+                Vector(178, -1180, 389),
+                Vector(239, -1180, 389),
+                Vector(1505, 442, 548),
+                Vector(1509, 402, 548),
+                Vector(1494, 392, 548)
             }),
             CMapAddItem("ammo_spas12", array<Vector> = {
-            	Vector(-196, 217, 432),
-				Vector(-225, 220, 432),
-				Vector(-240, 194, 432),
-				Vector(1459, 449, 548),
-				Vector(1505, 451, 548)
+                Vector(-196, 217, 432),
+                Vector(-225, 220, 432),
+                Vector(-240, 194, 432),
+                Vector(1459, 449, 548),
+                Vector(1505, 451, 548)
             }),
             CMapAddItem("ammo_aksammobox", array<Vector> = {
-            	Vector(-16, 213, 432),
-				Vector(-57, 211, 432),
-				Vector(1208, 469, 582),
-				Vector(1202, 508, 582)
+                Vector(-16, 213, 432),
+                Vector(-57, 211, 432),
+                Vector(1208, 469, 582),
+                Vector(1202, 508, 582)
             })
         }
     }

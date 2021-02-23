@@ -48,46 +48,46 @@ class weapon_paranoia_mp5 : CBaseParanoiaWeapon{
             "weapons/paranoia/hks_01.wav", "weapons/paranoia/hks_clipout.wav", 
             "weapons/paranoia/hks_clipin.wav", "weapons/paranoia/hks_boltslap.wav", "weapons/glauncher.wav"};
     }
-	void SecondaryAttack(){
-		if( pPlayer.pev.waterlevel == WATERLEVEL_HEAD ){
-			self.PlayEmptySound();
-			self.m_flNextPrimaryAttack = g_Engine.time + 0.15;
-			return;
-		}
-		
-		if( pPlayer.m_rgAmmo(self.m_iSecondaryAmmoType) <= 0 ){
-			self.PlayEmptySound();
-			return;
-		}
+    void SecondaryAttack(){
+        if( pPlayer.pev.waterlevel == WATERLEVEL_HEAD ){
+            self.PlayEmptySound();
+            self.m_flNextPrimaryAttack = g_Engine.time + 0.15;
+            return;
+        }
+        
+        if( pPlayer.m_rgAmmo(self.m_iSecondaryAmmoType) <= 0 ){
+            self.PlayEmptySound();
+            return;
+        }
 
 
-		pPlayer.m_iWeaponVolume = NORMAL_GUN_VOLUME;
-		pPlayer.m_iWeaponFlash = BRIGHT_GUN_FLASH;
+        pPlayer.m_iWeaponVolume = NORMAL_GUN_VOLUME;
+        pPlayer.m_iWeaponFlash = BRIGHT_GUN_FLASH;
 
-		pPlayer.m_iExtraSoundTypes = bits_SOUND_DANGER;
-		pPlayer.m_flStopExtraSoundTime = g_Engine.time + 0.2;
+        pPlayer.m_iExtraSoundTypes = bits_SOUND_DANGER;
+        pPlayer.m_flStopExtraSoundTime = g_Engine.time + 0.2;
 
-		pPlayer.m_rgAmmo( self.m_iSecondaryAmmoType, pPlayer.m_rgAmmo( self.m_iSecondaryAmmoType ) - 1 );
+        pPlayer.m_rgAmmo( self.m_iSecondaryAmmoType, pPlayer.m_rgAmmo( self.m_iSecondaryAmmoType ) - 1 );
 
-		pPlayer.pev.punchangle.x = -10.0;
-		self.SendWeaponAnim(pPlayer.m_rgAmmo( self.m_iSecondaryAmmoType) <= 0 ? 6 : 5);
-		pPlayer.SetAnimation( PLAYER_ATTACK1 );
-		g_SoundSystem.EmitSoundDyn( pPlayer.edict(), CHAN_WEAPON, "weapons/glauncher.wav", 0.8, ATTN_NORM, 0, PITCH_NORM );
-		Math.MakeVectors( pPlayer.pev.v_angle + pPlayer.pev.punchangle );
+        pPlayer.pev.punchangle.x = -10.0;
+        self.SendWeaponAnim(pPlayer.m_rgAmmo( self.m_iSecondaryAmmoType) <= 0 ? 6 : 5);
+        pPlayer.SetAnimation( PLAYER_ATTACK1 );
+        g_SoundSystem.EmitSoundDyn( pPlayer.edict(), CHAN_WEAPON, "weapons/glauncher.wav", 0.8, ATTN_NORM, 0, PITCH_NORM );
+        Math.MakeVectors( pPlayer.pev.v_angle + pPlayer.pev.punchangle );
 
-		if( ( pPlayer.pev.button & IN_DUCK ) != 0 ){
-			g_EntityFuncs.ShootContact( pPlayer.pev, 
-								pPlayer.pev.origin + g_Engine.v_forward * 16 + g_Engine.v_right * 6, 
-								g_Engine.v_forward * 900 ); //800
-		}
-		else{
-			g_EntityFuncs.ShootContact( pPlayer.pev, 
-								pPlayer.pev.origin + pPlayer.pev.view_ofs * 0.5 + g_Engine.v_forward * 16 + g_Engine.v_right * 6, 
-								g_Engine.v_forward * 900 ); //800
-		}
-		self.m_flNextPrimaryAttack = self.m_flNextSecondaryAttack = g_Engine.time + (pPlayer.m_rgAmmo( self.m_iSecondaryAmmoType) <= 0 ? 0.6 : flSccenaryTime);
-		self.m_flTimeWeaponIdle = g_Engine.time + flSccenaryTime;
-		if( pPlayer.m_rgAmmo(self.m_iSecondaryAmmoType) <= 0 )
-			pPlayer.SetSuitUpdate( "!HEV_AMO0", false, 0 );
-	}
+        if( ( pPlayer.pev.button & IN_DUCK ) != 0 ){
+            g_EntityFuncs.ShootContact( pPlayer.pev, 
+                                pPlayer.pev.origin + g_Engine.v_forward * 16 + g_Engine.v_right * 6, 
+                                g_Engine.v_forward * 900 ); //800
+        }
+        else{
+            g_EntityFuncs.ShootContact( pPlayer.pev, 
+                                pPlayer.pev.origin + pPlayer.pev.view_ofs * 0.5 + g_Engine.v_forward * 16 + g_Engine.v_right * 6, 
+                                g_Engine.v_forward * 900 ); //800
+        }
+        self.m_flNextPrimaryAttack = self.m_flNextSecondaryAttack = g_Engine.time + (pPlayer.m_rgAmmo( self.m_iSecondaryAmmoType) <= 0 ? 0.6 : flSccenaryTime);
+        self.m_flTimeWeaponIdle = g_Engine.time + flSccenaryTime;
+        if( pPlayer.m_rgAmmo(self.m_iSecondaryAmmoType) <= 0 )
+            pPlayer.SetSuitUpdate( "!HEV_AMO0", false, 0 );
+    }
 }

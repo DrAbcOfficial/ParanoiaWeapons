@@ -58,15 +58,15 @@ class weapon_paranoia_rpg : CBaseParanoiaWeapon{
         g_Game.PrecacheOther("paranoia_rpg_rocket");
         g_Game.PrecacheModel( szWModel );
         g_Game.PrecacheGeneric( szWModel);
-		g_Game.PrecacheModel( szVModel );
+        g_Game.PrecacheModel( szVModel );
         g_Game.PrecacheGeneric( szVModel);
-		g_Game.PrecacheModel( szPModel );
+        g_Game.PrecacheModel( szPModel );
         g_Game.PrecacheGeneric( szPModel);
 
         g_Game.PrecacheModel( szHUDModel );
         g_Game.PrecacheGeneric( szHUDModel);
 
-		for(uint i = 0; i < aryFireSound.length(); i++){
+        for(uint i = 0; i < aryFireSound.length(); i++){
             g_SoundSystem.PrecacheSound( aryFireSound[i] );
         }
         for(uint i = 0; i < aryOtherSound.length(); i++){
@@ -81,36 +81,36 @@ class weapon_paranoia_rpg : CBaseParanoiaWeapon{
             return;
         }
 
-		if(self.m_iClip <= 0 ){
-			self.PlayEmptySound();
-			self.m_flNextPrimaryAttack = g_Engine.time + 0.15f;
-			return;
-		}
-		
-		self.m_flTimeWeaponIdle = g_Engine.time + flIdleTime;
+        if(self.m_iClip <= 0 ){
+            self.PlayEmptySound();
+            self.m_flNextPrimaryAttack = g_Engine.time + 0.15f;
+            return;
+        }
+        
+        self.m_flTimeWeaponIdle = g_Engine.time + flIdleTime;
         self.m_flNextPrimaryAttack = self.m_flNextSecondaryAttack = g_Engine.time + flPrimaryTime;
 
-		self.m_iClip--;
+        self.m_iClip--;
         bAutoFlag = true;
-		
-		pPlayer.pev.effects |= EF_MUZZLEFLASH;
-		pPlayer.m_iWeaponVolume = LOUD_GUN_VOLUME;
-		pPlayer.m_iWeaponFlash = BRIGHT_GUN_FLASH;
-		pPlayer.SetAnimation( PLAYER_ATTACK1 );
+        
+        pPlayer.pev.effects |= EF_MUZZLEFLASH;
+        pPlayer.m_iWeaponVolume = LOUD_GUN_VOLUME;
+        pPlayer.m_iWeaponFlash = BRIGHT_GUN_FLASH;
+        pPlayer.SetAnimation( PLAYER_ATTACK1 );
 
         array<int>@ aryAnimation = bIron ? aryIronFireAnimation : aryFireAnimation;
         int iAniIndex = self.m_iClip != 0 && aryAnimation.length() > 1 ? g_PlayerFuncs.SharedRandomLong(pPlayer.random_seed, 0, aryAnimation.length()-2) : aryAnimation.length() - 1;
         self.SendWeaponAnim(aryAnimation[iAniIndex], 0, 0);
 
-		g_SoundSystem.EmitSoundDyn( pPlayer.edict(), CHAN_WEAPON, 
+        g_SoundSystem.EmitSoundDyn( pPlayer.edict(), CHAN_WEAPON, 
             aryFireSound[g_PlayerFuncs.SharedRandomLong(pPlayer.random_seed, 0, aryFireSound.length() - 1)], 
             0.9, ATTN_NORM, 0, PITCH_NORM );
-		
-		Vector vecSrc = pPlayer.GetGunPosition();
-		Vector vecAiming = pPlayer.GetAutoaimVector( AUTOAIM_5DEGREES );
+        
+        Vector vecSrc = pPlayer.GetGunPosition();
+        Vector vecAiming = pPlayer.GetAutoaimVector( AUTOAIM_5DEGREES );
         Vector vecAcc = bIron ? vecIronAccurency : vecAccurency;
 
-		//pPlayer.FireBullets(1, vecSrc, vecAiming, vecAcc, 8192, BULLET_PLAYER_CUSTOMDAMAGE, 2, iDamage + int(Math.RandomFloat(vecDamageDrift.x, vecDamageDrift.y)));
+        //pPlayer.FireBullets(1, vecSrc, vecAiming, vecAcc, 8192, BULLET_PLAYER_CUSTOMDAMAGE, 2, iDamage + int(Math.RandomFloat(vecDamageDrift.x, vecDamageDrift.y)));
 
         paranoia_rpg_rocket@ pRPG7 = cast<paranoia_rpg_rocket@>(CastToScriptClass(g_EntityFuncs.CreateEntity( "paranoia_rpg_rocket", null,  false)));
         g_EntityFuncs.SetOrigin( pRPG7.self, pPlayer.GetGunPosition() );
@@ -119,7 +119,7 @@ class weapon_paranoia_rpg : CBaseParanoiaWeapon{
         pRPG7.pev.angles = Math.VecToAngles( pRPG7.pev.velocity );
         pRPG7.pev.dmg = iDamage;
         pRPG7.pev.frags = iDamage2;
-		pRPG7.SetThink( ThinkFunction( pRPG7.Think ) );
+        pRPG7.SetThink( ThinkFunction( pRPG7.Think ) );
         pRPG7.SetTouch( TouchFunction( pRPG7.Touch ) );
         g_EntityFuncs.DispatchSpawn( pRPG7.self.edict() );
 
@@ -138,17 +138,17 @@ class weapon_paranoia_rpg : CBaseParanoiaWeapon{
 
         g_PlayerFuncs.ScreenShake(pPlayer.pev.origin, 16, 23, 3, 250);
 
-		if( self.m_iClip == 0 && pPlayer.m_rgAmmo( self.m_iPrimaryAmmoType ) <= 0 )
-			pPlayer.SetSuitUpdate( "!HEV_AMO0", false, 0 );
-		
-		pPlayer.pev.punchangle.x += Math.RandomFloat( vec2XPunch.x, vec2XPunch.y );
+        if( self.m_iClip == 0 && pPlayer.m_rgAmmo( self.m_iPrimaryAmmoType ) <= 0 )
+            pPlayer.SetSuitUpdate( "!HEV_AMO0", false, 0 );
+        
+        pPlayer.pev.punchangle.x += Math.RandomFloat( vec2XPunch.x, vec2XPunch.y );
         pPlayer.pev.punchangle.y += Math.RandomFloat( vec2YPunch.x, vec2YPunch.y );
-	}
+    }
     
     void SecondaryAttack() override{
-		self.m_flTimeWeaponIdle = self.m_flNextSecondaryAttack = self.m_flNextPrimaryAttack = g_Engine.time + flSccenaryTime;
+        self.m_flTimeWeaponIdle = self.m_flNextSecondaryAttack = self.m_flNextPrimaryAttack = g_Engine.time + flSccenaryTime;
         //Nothing but sad panda
-	}
+    }
 }
 
 class paranoia_rpg_rocket : ScriptBaseEntity {
@@ -161,7 +161,7 @@ class paranoia_rpg_rocket : ScriptBaseEntity {
         self.pev.movetype = MOVETYPE_FLYMISSILE;
         self.pev.iuser2 = 1;
         g_EntityFuncs.SetModel( self, szMdl);
-		g_SoundSystem.EmitSoundDyn( self.edict(), CHAN_ITEM, szSound, 1.0, ATTN_NORM, 0, 95 + Math.RandomLong( 0, 10 ) );
+        g_SoundSystem.EmitSoundDyn( self.edict(), CHAN_ITEM, szSound, 1.0, ATTN_NORM, 0, 95 + Math.RandomLong( 0, 10 ) );
         self.pev.nextthink = g_Engine.time + 0.07f;
     }
 
@@ -172,23 +172,23 @@ class paranoia_rpg_rocket : ScriptBaseEntity {
     }
     
     void Touch ( CBaseEntity@ pOther ) {
-		if( g_EngineFuncs.PointContents( self.pev.origin ) == CONTENTS_SKY ){
-			g_EntityFuncs.Remove( self );
-			return;
-		}
+        if( g_EngineFuncs.PointContents( self.pev.origin ) == CONTENTS_SKY ){
+            g_EntityFuncs.Remove( self );
+            return;
+        }
         self.pev.solid = SOLID_NOT;
         self.pev.movetype = MOVETYPE_NONE;
         self.pev.velocity = Vector( 0, 0, 0 );
         SetThink(null);
         TraceResult tr;
-		tr = g_Utility.GetGlobalTrace();
+        tr = g_Utility.GetGlobalTrace();
         g_EntityFuncs.CreateExplosion(self.pev.origin, self.pev.angles, self.pev.owner, 200, false);
-		g_WeaponFuncs.RadiusDamage( self.pev.origin,self.pev, self.pev.owner.vars, self.pev.dmg, self.pev.frags, CLASS_NONE, DMG_BLAST | DMG_ALWAYSGIB );
-		g_Utility.DecalTrace( tr, DECAL_SCORCH1 + Math.RandomLong(0,1) );
+        g_WeaponFuncs.RadiusDamage( self.pev.origin,self.pev, self.pev.owner.vars, self.pev.dmg, self.pev.frags, CLASS_NONE, DMG_BLAST | DMG_ALWAYSGIB );
+        g_Utility.DecalTrace( tr, DECAL_SCORCH1 + Math.RandomLong(0,1) );
         g_EntityFuncs.Remove( self ); 
-	}
+    }
     
-	void Think() {
+    void Think() {
         NetworkMessage m(MSG_BROADCAST, NetworkMessages::SVC_TEMPENTITY, null);
             m.WriteByte(TE_SPRITE);
             m.WriteCoord(self.pev.origin.x);
@@ -199,5 +199,5 @@ class paranoia_rpg_rocket : ScriptBaseEntity {
             m.WriteByte(100);
         m.End();
         self.pev.nextthink = g_Engine.time + 0.07f;
-	}
+    }
 }

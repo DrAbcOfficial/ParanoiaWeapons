@@ -34,14 +34,14 @@ class weapon_painkiller : CBaseParanoiaWeapon{
         }
         pPlayer.SelectLastItem();
         return false;
-	}
+    }
 
     void DestroyItem(){
         self.DestroyItem();
     }
 
     void Precache() override{
-		for(uint i = 0; i < aryFireSound.length(); i++){
+        for(uint i = 0; i < aryFireSound.length(); i++){
             g_SoundSystem.PrecacheSound( aryFireSound[i] );
         }
         g_Game.PrecacheModel( szWModel );
@@ -53,7 +53,7 @@ class weapon_painkiller : CBaseParanoiaWeapon{
 
     void PrimaryAttack() override{
         BaseClass.PrimaryAttack();
-	}
+    }
 
     void WeaponIdle(){
         BaseClass.WeaponIdle();
@@ -61,5 +61,5 @@ class weapon_painkiller : CBaseParanoiaWeapon{
     
     void SecondaryAttack() override{
         BaseClass.SecondaryAttack();
-	}
+    }
 }
