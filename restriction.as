@@ -1,6 +1,8 @@
 #include "include"
 #include "point_checkpoint"
 #include "controller"
+#include "NewEntityData"
+#include "CExpCrab"
 
 array<ItemMapping@> g_ItemMappings = { 
     ItemMapping( "weapon_9mmAR", "weapon_ak74" ),
@@ -51,441 +53,11 @@ class CMapAddItem{
     }
 }
 
-dictionary dicAddItem = {
-    {
-        "restriction01",
-        array<CMapAddItem@> = {
-            CMapAddItem("ammo_apsammobox", array<Vector> = {
-                Vector(452, -2117, -520),
-                Vector(409, -2100, -520)
-            }),
-            CMapAddItem("ammo_flashbattery", array<Vector> = {
-                Vector(2017, 1075, -91),
-                Vector(1996, 1112, -91),
-                Vector(2067, -1657, -427),
-                Vector(2834, -2840, -298)
-            }),
-            CMapAddItem("ammo_painkiller", array<Vector> = {
-                Vector(1932, 1144, -91),
-                Vector(1902, 1153, -91),
-                Vector(2162, -1660, -427)
-            }) 
-        }
-    },
-    {
-        "restriction02",
-        array<CMapAddItem@> = {
-            CMapAddItem("ammo_apsammobox", array<Vector> = {
-                Vector(-537, -248, -638),
-                Vector(-643, -248, -638),
-                Vector(-716, -248, -638),
-                Vector(-797, -248, -638),
-                Vector(-1733., 980, -727),
-                Vector(-1658., 980, -727),
-                Vector(-1584., 980, -727),
-                Vector(52, 945, -215),
-                Vector(52, 869, -215)
-            }),
-            CMapAddItem("ammo_flashbattery", array<Vector> = {
-                Vector(564, -1939, -375),
-				Vector(599, -1932, -375),
-				Vector(-489, -603, -638)
-            })
-        }
-    },
-    {
-        "restriction03",
-        array<CMapAddItem@> = {
-            CMapAddItem("ammo_grozaammobox", array<Vector> = {
-                Vector(-1589, -1312, -411),
-                Vector(-1494, -1251, -411),
-                Vector(-272, -1123, -667),
-                Vector(-567, -2130, -667),
-                Vector(903, -1157, -414),
-                Vector(1599, -1874, -667),
-                Vector(1609, -1831, -667)
-            }),
-            CMapAddItem("ammo_apsammobox", array<Vector> = {
-                Vector(-1682, -1240, -411),
-                Vector(-1746, -1240, -411),
-                Vector(-301, -1059, -667),
-                Vector(-731, -861, -411),
-                Vector(923, -1109, -414),
-                Vector(1282, -2016, -1419),
-                Vector(1652, -1873, -667)
-
-            }),
-            CMapAddItem("ammo_ak74ammobox", array<Vector> = {
-                Vector(-269, -1000, -667),
-                Vector(-566, -2101, -667),
-                Vector(21, -2545, -411),
-                Vector(32, -2582, -411),
-                Vector(847, -1141, -414),
-                Vector(1333, -1870, -667),
-                Vector(1352, -1854, -667),
-                Vector(1337, -1830, -667)
-
-            }),
-            CMapAddItem("weapon_ak74", array<Vector> = {
-                Vector(-24, -2611, -411),
-                Vector(1414, -1821, -667)
-                
-            }),
-            CMapAddItem("item_healthkit", array<Vector> = {
-                Vector(-756, -1108, -667),
-                Vector(-773, -1028, -667),
-                Vector(-762, -1535, -667),
-                Vector(-245, -3021, -362),
-                Vector(1278, -1537, -414),
-                Vector(1425, -1867, -667),
-                Vector(1466, -1882, -667)
-            }),
-            CMapAddItem("weapon_paranoia_mp5", array<Vector> = {
-                Vector(906, -1596, -828)
-            }),
-            CMapAddItem("ammo_paranoia_mp5ammobox", array<Vector> = {
-                Vector(953, -1607, -828),
-                Vector(1008, -1607, -828)
-            }),
-            CMapAddItem("ammo_flashbattery", array<Vector> = {
-                Vector(-1454, -1381, -411),
-                Vector(-790, -1082, -411),
-                Vector(-1181, -1380, -411),
-                Vector(-262, -2268, -380),
-                Vector(1295, -1509, -414),
-                Vector(1172, -2100, -1419),
-				Vector(1242, -2112, -1419)
-
-            }),
-            CMapAddItem("ammo_painkiller", array<Vector> = {
-                Vector(-1451, -1324, -411),
-                Vector(-1147, -1420, -411)
-
-            }) 
-        }
-    },
-    {
-        "restriction04",
-        array<CMapAddItem@> = {
-            CMapAddItem("ammo_painkiller", array<Vector> = {
-                Vector(-1601, 1637, 180),
-				Vector(-1601, 1567, 180),
-				Vector(-238, 222, 128),
-				Vector(-228, 187, 128),
-				Vector(-1349, 1565, 244),
-				Vector(592, 3496, 514),
-				Vector(1663, 3570, 514),
-				Vector(1332, 439, 163),
-				Vector(1337, 464, 163)
-            }),
-            CMapAddItem("ammo_flashbattery", array<Vector> = {
-                Vector(-1311, 1622, 244),
-                Vector(1612, 3621, 514),
-                Vector(-962, -1463, 156)
-            }),
-            CMapAddItem("ammo_spas12", array<Vector> = {
-                Vector(-1158, 1515, 244),
-				Vector(-1154, 1552, 244),
-				Vector(1600, 3660, 514),
-				Vector(-839, -1455, 156),
-				Vector(-839, -1523, 156)
-
-            }),
-            CMapAddItem("ammo_apsammobox", array<Vector> = {
-                Vector(861, 2825, 386),
-                Vector(1257, 416, 156)
-
-            }),
-            CMapAddItem("ammo_ak74ammobox", array<Vector> = {
-                Vector(811, 2834, 386),
-				Vector(746, 2830, 386)
-
-            }),
-            CMapAddItem("ammo_aksammobox", array<Vector> = {
-                Vector(851, 964, 118),
-				Vector(857, 1000, 145)
-
-            }),
-            CMapAddItem("ammo_grozaammobox", array<Vector> = {
-                Vector(1870, 291, 616),
-				Vector(1947, 254, 616),
-				Vector(531, 3557, 514),
-				Vector(541, 3626, 514)
-            })
-        }
-    },
-    {
-        "restriction05",
-        array<CMapAddItem@> = {
-            CMapAddItem("ammo_painkiller", array<Vector> = {
-            	Vector(-1209, -2765, 198),
-				Vector(-1210, -2815, 198)
-
-            }),
-            CMapAddItem("ammo_flashbattery", array<Vector> = {
-            	Vector(-2460, -2923, 217)
-            }),
-            CMapAddItem("ammo_spas12", array<Vector> = {
-            	Vector(-2451, -2934, 217)
-
-            }),
-            CMapAddItem("weapon_aps", array<Vector> = {
-            	Vector(-1810, -3399, 219)
-
-            }),
-            CMapAddItem("weapon_aks", array<Vector> = {
-            	Vector(-565, 3286, -519),
-            	Vector(850, 1947, -539),
-				Vector(912, 1938, -539)
-
-            }),
-            CMapAddItem("ammo_apsammobox", array<Vector> = {
-            	Vector(-1809, -3436, 219)
-
-            }),
-            CMapAddItem("ammo_ak74ammobox", array<Vector> = {
-                Vector(-402, -1540, -7),
-				Vector(-357, -1551, -7),
-				Vector(-492, 3210, -539),
-				Vector(-511, 3148, -539)
-
-            }),
-            CMapAddItem("ammo_aksammobox", array<Vector> = {
-            	Vector(-1224, -1801, 19),
-				Vector(-1254, -1821, 19),
-				Vector(-82, 1122, -543),
-				Vector(-52, 1081, -543),
-				Vector(-94, 1056, -543)
-
-            }),
-            CMapAddItem("ammo_grozaammobox", array<Vector> = {
-            	Vector(-380, -1749, 39),
-            	Vector(-396, 3123, -539),
-				Vector(-457, 3165, -539),
-				Vector(-81, 1055, -543),
-				Vector(-50, 1052, -543)
-
-            }),
-            CMapAddItem("item_healthkit", array<Vector> = {
-                Vector(52, 1532, -396),
-				Vector(-11, 1512, -396)
-            })
-        }
-    },
-    {
-        "restriction06",
-        array<CMapAddItem@> = {
-            CMapAddItem("ammo_painkiller", array<Vector> = {
-            	Vector(658, 1140, -1132),
-            	Vector(-570, 1410, -1092),
-				Vector(-497, 1416, -1092),
-				Vector(-934, -214, -1131),
-				Vector(-934, -167, -1131)
-            }),
-            CMapAddItem("ammo_flashbattery", array<Vector> = {
-            	Vector(657, 1195, -1132),
-				Vector(657, 1233, -1132),
-				Vector(-1018, -154, -1131)
-
-            }),
-            CMapAddItem("ammo_spas12", array<Vector> = {
-            	Vector(-512, 1476, -1092)
-            }),
-            CMapAddItem("ammo_apsammobox", array<Vector> = {
-            	Vector(-544, 1456, -1092),
-				Vector(-558, 1451, -1092),
-				Vector(-1035, -273, -1131)
-            }),
-            CMapAddItem("ammo_ak74ammobox", array<Vector> = {
-                Vector(2634, -1289, -1383),
-				Vector(2634, -1342, -1383)
-            }),
-            CMapAddItem("ammo_aksammobox", array<Vector> = {
-            	Vector(-1100, -276, -1131),
-				Vector(-1056, -350, -1131),
-				Vector(279, 2199, -1491),
-				Vector(243, 2173, -1491),
-				Vector(208, 2168, -1491)
-            }),
-            CMapAddItem("ammo_grozaammobox", array<Vector> = {
-            	Vector(562, 1049, -1131),
-				Vector(635, 1079, -1132),
-				Vector(-1113, -273, -1131),
-				Vector(-1085, -317, -1131),
-				Vector(2633, -1160, -1383)
-            }),
-            CMapAddItem("item_healthkit", array<Vector> = {
-               	Vector(2382, -1336, -1380),
-				Vector(2394, -1310, -1380)
-            })
-        }
-    },
-    {
-        "restriction07",
-        array<CMapAddItem@> = {
-            CMapAddItem("ammo_painkiller", array<Vector> = {
-            	Vector(-595, 749, -1902),
-				Vector(-595, 702, -1929),
-				Vector(-2262, 1876, -3667),
-				Vector(-2320, 1876, -3667)
-            }),
-            CMapAddItem("ammo_flashbattery", array<Vector> = {
-            	Vector(-775, 871, -1924),
-				Vector(-775, 849, -1924),
-				Vector(-986, 411, -1663),
-				Vector(-929, 411, -1663),
-				Vector(-2247, 2043, -3667),
-				Vector(-2289, 2043, -3667)
-            }),
-            CMapAddItem("ammo_f1", array<Vector> = {
-            	Vector(-778, 862, -1924)
-            }),
-
-            CMapAddItem("ammo_apsammobox", array<Vector> = {
-            	Vector(-714, 856, -1933),
-				Vector(-682, 854, -1933),
-				Vector(-733, 839, -1933)
-            }),
-            CMapAddItem("ammo_aksammobox", array<Vector> = {
-            	Vector(-2270, 1951, -3667),
-				Vector(-2290, 1909, -3667)
-            }),
-            CMapAddItem("ammo_grozaammobox", array<Vector> = {
-            	Vector(-839, 852, -1924),
-				Vector(-837, 866, -1924)
-            })
-        }
-    },
-    {
-        "restriction08",
-        array<CMapAddItem@> = {
-            CMapAddItem("ammo_painkiller", array<Vector> = {
-            	Vector(-677, 723, 100),
-				Vector(-676, 676, 100)
-            }),
-            CMapAddItem("ammo_flashbattery", array<Vector> = {
-            	Vector(-2503, -691, 116),
-				Vector(-2524, -727, 116),
-				Vector(1342, 158, 136),
-				Vector(1402, 182, 136)
-            }),
-            CMapAddItem("weapon_val", array<Vector> = {
-            	Vector(-427, -2481, -336)
-            }),
-            CMapAddItem("ammo_val", array<Vector> = {
-            	Vector(-390, -2338, -346),
-				Vector(-415, -2312, -346)
-            }),
-            CMapAddItem("weapon_paranoia_mp5", array<Vector> = {
-            	Vector(-3403, -82, 116)
-            }),
-            CMapAddItem("ammo_paranoia_mp5ammobox", array<Vector> = {
-            	Vector(-3383, -10, 116),
-				Vector(-3401, 52, 116)
-            }),
-            CMapAddItem("ammo_glockammobox", array<Vector> = {
-            	Vector(-686, 633, -159),
-				Vector(-716, 637, -159)
-            }),
-            CMapAddItem("ammo_apsammobox", array<Vector> = {
-            	Vector(-3386, 821, -340),
-				Vector(-3347, 847, -340)
-            }),
-            CMapAddItem("ammo_aksammobox", array<Vector> = {
-            	Vector(-3321, 979, -340),
-				Vector(-3284, 1003, -340),
-				Vector(-3269, 971, -340)
-            }),
-            CMapAddItem("ammo_grozaammobox", array<Vector> = {
-            	Vector(-3551, 948, -340),
-				Vector(-3543, 936, -340),
-				Vector(-3577, 918, -340)
-            })
-        }
-    },
-    {
-        "restriction09",
-        array<CMapAddItem@> = {
-            CMapAddItem("ammo_painkiller", array<Vector> = {
-            	Vector(1418, 2042, 38),
-            	Vector(-798, 1675, -72),
-				Vector(-822, 1644, -72),
-				Vector(-781, 1650, -72)
-            }),
-            CMapAddItem("ammo_flashbattery", array<Vector> = {
-            	Vector(1406, 1871, 78),
-				Vector(1404, 1906, 105)
-            }),
-            CMapAddItem("ammo_apsammobox", array<Vector> = {
-            	Vector(-1390, 2355, 55),
-            	Vector(-736, 1619, -72),
-            	Vector(-756, 1579, -72)
-            }),
-            CMapAddItem("ammo_spas12", array<Vector> = {
-            	Vector(-1520, 2276, 55),
-				Vector(-1479, 2262, 55),
-				Vector(-1517, 2297, 55)
-            }),
-            CMapAddItem("ammo_aksammobox", array<Vector> = {
-            	Vector(641, 2642, 99),
-				Vector(678, 2656, 99),
-				Vector(-742, 1557, -72),
-				Vector(-729, 1593, -72),
-				Vector(-683, 1589, -72),
-				Vector(-421, 78, 36),
-				Vector(-476, 65, 36),
-				Vector(-523, 33, 36)
-            }),
-            CMapAddItem("ammo_grozaammobox", array<Vector> = {
-            	Vector(-1361, 2381, 55),
-				Vector(-1408, 2380, 55)
-            })
-        }
-    },
-    {
-        "restriction10",
-        array<CMapAddItem@> = {
-            CMapAddItem("ammo_painkiller", array<Vector> = {
-            	Vector(198, -1021, 389),
-				Vector(230, -1004, 389),
-				Vector(1322, 508, 582),
-				Vector(1340, 508, 582),
-				Vector(1342, 495, 582)
-            }),
-            CMapAddItem("ammo_flashbattery", array<Vector> = {
-            	Vector(-224, 282, 444),
-				Vector(-288, 282, 444),
-				Vector(1333, 312, 548)
-            }),
-            CMapAddItem("ammo_apsammobox", array<Vector> = {
-				Vector(178, -1180, 389),
-				Vector(239, -1180, 389),
-				Vector(1505, 442, 548),
-				Vector(1509, 402, 548),
-				Vector(1494, 392, 548)
-            }),
-            CMapAddItem("ammo_spas12", array<Vector> = {
-            	Vector(-196, 217, 432),
-				Vector(-225, 220, 432),
-				Vector(-240, 194, 432),
-				Vector(1459, 449, 548),
-				Vector(1505, 451, 548)
-            }),
-            CMapAddItem("ammo_aksammobox", array<Vector> = {
-            	Vector(-16, 213, 432),
-				Vector(-57, 211, 432),
-				Vector(1208, 469, 582),
-				Vector(1202, 508, 582)
-            })
-        }
-    }
-};
-
 class CExtraMonster{
     private string szPath = "";
     private string szDisplayName = "";
-    private array<string> aryExtraSound = "";
-    private array<ItemMapping@> aryKeyValue = "";
+    private array<string> aryExtraSound = {};
+    private array<ItemMapping@> aryKeyValue = {};
 
     float iWeight = 0;
 
@@ -496,14 +68,16 @@ class CExtraMonster{
         }
     }
 
-    void Set(CBaseEntity@ pEntity){
-        CBaseMonster@ pMonster = cast<CBaseMonster@>(pEntity)
-        if(pMonster !is null){
-            g_EntityFuncs.SetModel(pMonster, this.szPath);
-            pMonster.m_FormattedName = szDisplayName;
+    void Set(CBaseMonster@ pMonster){
+        if(@pMonster !is null){
             for(uint i = 0; i < aryKeyValue.length(); i++){
-                pMonster.KeyValue(aryKeyValue[i].get_From(), aryKeyValue[i].get_To());
+                if(aryKeyValue[i].get_From() == "health")
+                    pMonster.pev.health = pMonster.pev.max_health = atoi(aryKeyValue[i].get_To());
             }
+            pMonster.m_fCustomModel = true;
+            pMonster.m_FormattedName = szDisplayName;
+            g_EntityFuncs.SetModel(pMonster, this.szPath);
+            g_EntityFuncs.SetSize(pMonster.pev, VEC_HUMAN_HULL_MIN, VEC_HUMAN_HULL_MAX);
         }
     }
 
@@ -526,16 +100,11 @@ const array<CExtraMonster@> aryExtraZombie = {
                         "weapons/paranoia/bes/zo_attack2.wav",
                         "weapons/paranoia/bes/zo_pain1.wav",
                         "weapons/paranoia/bes/zo_pain2.wav"},
-        array<ItemMapping@> = {ItemMapping("max_health", "700")}
+        array<ItemMapping@> = {ItemMapping("health", "300")}
     ),
     CExtraMonster(
         "models/paranoia/zombie_female.mdl",
         "Female mutational scientist",
-        40
-    ),
-    CExtraMonster(
-        "models/paranoia/zombie_female.mdl",
-        "Mtational scientist",
         40
     ),
     CExtraMonster(
@@ -547,10 +116,7 @@ const array<CExtraMonster@> aryExtraZombie = {
         "models/paranoia/zombie_soldier.mdl",
         "Mtational soldier",
         40
-    )
-};
-
-const array<CExtraMonster@> aryExtraMilitaryZombie = {
+    ),
     CExtraMonster(
         "models/paranoia/zombie_himik.mdl",
         "NP Cleaner zombie",
@@ -563,27 +129,39 @@ const array<CExtraMonster@> aryExtraMilitaryZombie = {
     )
 };
 
-HookReturnCode EntityCreated( CBaseEntity@ pEntity ){
-    if(pEntity.pev.classname == "monster_zombie"){
-        float flRandom = Math.RandomFloat(0, 1);
-        for(uint i = 0; i < aryExtraZombie.length(); i++){
-            if(flRandom <= aryExtraZombie[i].iWeight){
-                aryExtraZombie[i].Set(@pEntity);
-                break;
-            }
-        }
+class CExtraMonsterPosItem{
+    string szClassName = "";
+    array<array<int>> aryPos = {};
+    CExtraMonsterPosItem(string _Name, array<array<int>> _RGB){
+        this.szClassName = _Name;
+        this.aryPos = _RGB;
     }
-    else if(pEntity.pev.classname == "monster_zombie_soldier"){
-        float flRandom = Math.RandomFloat(0, 1);
-        for(uint i = 0; i < aryExtraMilitaryZombie.length(); i++){
-            if(flRandom <= aryExtraMilitaryZombie[i].iWeight){
-                aryExtraMilitaryZombie[i].Set(@pEntity);
-                break;
-            }
-        }
-    }
-}
 
+    void Spawn(){
+        for(uint i = 0; i < aryPos.length(); i++){
+            array<int> pos = aryPos[i];
+            CBaseEntity@ pEntity = g_EntityFuncs.Create(szClassName, Vector(pos[0], pos[1], pos[2]), Vector(0, pos[3], 0), false);
+            if(pEntity.pev.size.Length() <= 0)
+                g_EntityFuncs.SetSize(pEntity.pev, VEC_HUMAN_HULL_MIN, VEC_HUMAN_HULL_MAX);
+            CBaseMonster@ pMonster = cast<CBaseMonster@>(@pEntity);
+            pMonster.m_bloodColor = BLOOD_COLOR_RED;
+            if(pMonster.m_fCustomModel)
+                continue;
+            if(pMonster.pev.classname == "monster_zombie"){
+                float flRandom = Math.RandomFloat(0, 1);
+                if(flRandom <= aryExtraZombie[aryExtraZombie.length()-1].iWeight){
+                    for(uint j = 0; j < aryExtraZombie.length(); j++){
+                        if(flRandom <= aryExtraZombie[j].iWeight){
+                            aryExtraZombie[j].Set(@pMonster);
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+}
 
 void MapInit(){
     RegisterPointCheckPointEntity();
@@ -592,12 +170,12 @@ void MapInit(){
     //New weapon
     WeaponRegister();
     BatteryHookRegister();
+    ExpCrab::Register();
     g_ClassicMode.SetItemMappings( @g_ItemMappings );
     g_ClassicMode.ForceItemRemap( true );
 
     //Recalculate weights
-    //50 weight for original monster
-    float flTotal = 50;
+    float flTotal = 0;
     float flTemp = 0;
     for(uint i = 0; i < aryExtraZombie.length(); i++){
         flTotal += aryExtraZombie[i].iWeight;
@@ -606,22 +184,14 @@ void MapInit(){
         aryExtraZombie[i].iWeight = aryExtraZombie[i].iWeight/flTotal + flTemp;
         flTemp = aryExtraZombie[i].iWeight;
     }
-
-    flTotal = 50;
-    flTemp = 0;
-    for(uint i = 0; i < aryExtraMilitaryZombie.length(); i++){
-        flTotal += aryExtraMilitaryZombie[i].iWeight;
+    //Precache
+    for(uint i = 0; i < aryExtraZombie.length(); i++){
+        aryExtraZombie[i].Precache();
     }
-    for(uint i = 0; i < aryExtraMilitaryZombie.length(); i++){
-        aryExtraMilitaryZombie[i].iWeight = aryExtraMilitaryZombie[i].iWeight/flTotal + flTemp;
-        flTemp = aryExtraMilitaryZombie[i].iWeight;
-    }
-
-    //New Monster
-    g_Hooks.RegisterHook(Hooks::Game::EntityCreated, @EntityCreated);
 }
 
 void MapActivate(){
+    //Replace Weapons
     for(uint i = 0; i < g_ItemMappings.length(); i++){
         CBaseEntity@ pEntity = null;
         while( ( @pEntity = g_EntityFuncs.FindEntityByClassname( pEntity, g_ItemMappings[i].get_From() ) ) !is null ){
@@ -639,9 +209,19 @@ void MapActivate(){
             g_EntityFuncs.Remove(pEntity);
         }
     }
+
+    //Create New Weapons
     string szMapName = string(g_Engine.mapname).ToLowercase();
     if(dicAddItem.exists(szMapName)){
         array<CMapAddItem@> aryItems = cast<array<CMapAddItem@>>(dicAddItem[szMapName]);
+        for(uint i = 0; i < aryItems.length(); i++){
+            aryItems[i].Spawn();
+        }
+    }
+
+    //Create New Monsters
+    if(dicExtraMonster.exists(szMapName)){
+        array<CExtraMonsterPosItem@> aryItems = cast<array<CExtraMonsterPosItem@>>(dicExtraMonster[szMapName]);
         for(uint i = 0; i < aryItems.length(); i++){
             aryItems[i].Spawn();
         }
