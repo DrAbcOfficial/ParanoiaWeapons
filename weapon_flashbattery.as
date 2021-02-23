@@ -46,7 +46,9 @@ class weapon_flashbattery : CBaseParanoiaWeapon{
             g_SoundSystem.PrecacheSound( aryFireSound[i] );
         }
         g_Game.PrecacheModel( szWModel );
+        g_Game.PrecacheGeneric( szWModel);
         g_Game.PrecacheModel( szHUDModel );
+        g_Game.PrecacheGeneric( szHUDModel);
         g_Game.PrecacheGeneric( "sprites/" + szSprDir + "/" + self.pev.classname + ".txt");
     }
 

@@ -57,9 +57,14 @@ class weapon_paranoia_rpg : CBaseParanoiaWeapon{
     void Precache() override{
         g_Game.PrecacheOther("paranoia_rpg_rocket");
         g_Game.PrecacheModel( szWModel );
+        g_Game.PrecacheGeneric( szWModel);
 		g_Game.PrecacheModel( szVModel );
+        g_Game.PrecacheGeneric( szVModel);
 		g_Game.PrecacheModel( szPModel );
+        g_Game.PrecacheGeneric( szPModel);
+
         g_Game.PrecacheModel( szHUDModel );
+        g_Game.PrecacheGeneric( szHUDModel);
 
 		for(uint i = 0; i < aryFireSound.length(); i++){
             g_SoundSystem.PrecacheSound( aryFireSound[i] );

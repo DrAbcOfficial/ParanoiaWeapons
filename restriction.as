@@ -164,6 +164,7 @@ class CExtraMonsterPosItem{
 }
 
 void MapInit(){
+    
     RegisterPointCheckPointEntity();
     ControllerMapInit();
 

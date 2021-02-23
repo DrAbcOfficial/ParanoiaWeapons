@@ -76,10 +76,14 @@ abstract class CBaseParanoiaWeapon: ScriptBasePlayerWeaponEntity{
 
     void Precache(){
 		g_Game.PrecacheModel( szWModel );
+        g_Game.PrecacheGeneric( szWModel);
 		g_Game.PrecacheModel( szVModel );
+        g_Game.PrecacheGeneric( szVModel);
 		g_Game.PrecacheModel( szPModel );
+        g_Game.PrecacheGeneric( szPModel);
 
         g_Game.PrecacheModel( szHUDModel );
+        g_Game.PrecacheGeneric( szHUDModel);
 
         if(!szShellModel.IsEmpty())
 		    iShell = g_Game.PrecacheModel( szShellModel );
