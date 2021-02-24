@@ -163,8 +163,8 @@ abstract class CBaseParanoiaWeapon: ScriptBasePlayerWeaponEntity{
         if(!bCanAutoFire && bAutoFlag){
             return;
         }
-
-        if(self.m_iClip <= 0 ){
+        
+        if(self.m_iClip <= 0 || (iUnderWater > 0 && pPlayer.pev.waterlevel >= WATERLEVEL_HEAD)){
             self.PlayEmptySound();
             self.m_flNextPrimaryAttack = g_Engine.time + 0.15f;
             return;

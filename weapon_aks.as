@@ -26,6 +26,7 @@ class weapon_aks : CBaseParanoiaWeapon{
         iWeight = 8;
         iFOV = 70;
         iMoveSpeed = 200;
+        iUnderWater = 1;
         
         vecEjectOrigin = Vector(6, 18, -6);
         vecIronEjectOrigin = Vector(6, 18, -6);

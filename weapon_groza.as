@@ -26,6 +26,7 @@ class weapon_groza : CBaseParanoiaWeapon{
         iWeight = 8;
         iFOV = 40;
         iMoveSpeed = 150;
+        iUnderWater = 1;
         
         vecEjectOrigin = Vector(3, 15, -6);
         vecIronEjectOrigin = Vector(3, 10, -6);
