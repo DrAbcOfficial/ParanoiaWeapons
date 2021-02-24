@@ -188,35 +188,43 @@ namespace ExpCrab
             for(uint i = 0; i < pIdleSounds.length();i++)
             {
                 g_SoundSystem.PrecacheSound(pIdleSounds[i]);
+                g_Game.PrecacheGeneric( "sound/" + pIdleSounds[i]);
             }
 
             for(uint i = 0; i < pAlertSounds.length();i++)
             {
                 g_SoundSystem.PrecacheSound(pAlertSounds[i]);
+                g_Game.PrecacheGeneric( "sound/" + pAlertSounds[i]);
             }
 
             for(uint i = 0; i < pPainSounds.length();i++)
             {
                 g_SoundSystem.PrecacheSound(pPainSounds[i]);
+                g_Game.PrecacheGeneric( "sound/" + pPainSounds[i]);
             }
 
             for(uint i = 0; i < pAttackSounds.length();i++)
             {
                 g_SoundSystem.PrecacheSound(pAttackSounds[i]);
+                g_Game.PrecacheGeneric( "sound/" + pAttackSounds[i]);
             }
 
             for(uint i = 0; i < pDeathSounds.length();i++)
             {
                 g_SoundSystem.PrecacheSound(pDeathSounds[i]);
+                g_Game.PrecacheGeneric( "sound/" + pDeathSounds[i]);
             }
 
             for(uint i = 0; i < pBiteSounds.length();i++)
             {
                 g_SoundSystem.PrecacheSound(pBiteSounds[i]);
+                g_Game.PrecacheGeneric( "sound/" + pBiteSounds[i]);
             }
 
             g_Game.PrecacheModel(HEADCRAB_MODEL);
+            g_Game.PrecacheGeneric( HEADCRAB_MODEL);
             g_Game.PrecacheModel(EXPLOSION_SPR);
+            g_Game.PrecacheGeneric( EXPLOSION_SPR);
         }
 
         float GetDamageAmount()
