@@ -16,6 +16,10 @@
 #include "weapon_flashbattery"
 
 void WeaponRegister(){
+
+    g_Game.PrecacheGeneric( "sprites/paranoia/sniper.spr");
+    g_Game.PrecacheModel( "sprites/paranoia/sniper.spr" );
+
     ParanoiaAmmoRegister("ammo_ak74", "ammo_ak74");
     ParanoiaAmmoRegister("ammo_ak74ammobox", "ammo_ak74ammobox");
     ParanoiaAmmoRegister("ammo_aks", "ammo_aks");

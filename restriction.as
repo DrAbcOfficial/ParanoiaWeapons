@@ -228,12 +228,12 @@ void MapActivate(){
         }
     }
     //Create Trigger Entity
-    if(szMapName == "restriction01")
+    if(szMapName == "restriction01"){
         g_EntityFuncs.CreateEntity("game_text",  
             dictionary = {
-                {"channel", "1"},
+                {"channel", "2"},
                 {"fxtime", "0.25"},
-                {"holdtime", "1.2"},
+                {"holdtime", "2.2"},
                 {"fadeout", "0.5"},
                 {"fadein", "1.5"},
                 {"color2", "240 110 0"},
@@ -242,8 +242,10 @@ void MapActivate(){
                 {"y", "0.67"},
                 {"x", "-1"},
                 {"delay", "5"},
-                {"targetname", "Start_Door"},
-                {"message", "Enabled Enhance plugins by Dr.Abc"},
+                {"targetname", "text_credit4"},
+                {"spawnflags", "1"},
+                {"message", "This server enabled Enhance plugins by Dr.Abc"},
                 {"origin", "2763 1162 -100"}
             }, true);
+    }
 }

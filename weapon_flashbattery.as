@@ -44,6 +44,7 @@ class weapon_flashbattery : CBaseParanoiaWeapon{
     void Precache() override{
         for(uint i = 0; i < aryFireSound.length(); i++){
             g_SoundSystem.PrecacheSound( aryFireSound[i] );
+            g_Game.PrecacheGeneric( "sound/" + aryFireSound[i]);
         }
         g_Game.PrecacheModel( szWModel );
         g_Game.PrecacheGeneric( szWModel);

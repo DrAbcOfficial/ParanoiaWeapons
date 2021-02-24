@@ -68,9 +68,11 @@ class weapon_paranoia_rpg : CBaseParanoiaWeapon{
 
         for(uint i = 0; i < aryFireSound.length(); i++){
             g_SoundSystem.PrecacheSound( aryFireSound[i] );
+            g_Game.PrecacheGeneric( "sound/" + aryFireSound[i]);
         }
         for(uint i = 0; i < aryOtherSound.length(); i++){
             g_SoundSystem.PrecacheSound( aryOtherSound[i] );
+            g_Game.PrecacheGeneric( "sound/" + aryOtherSound[i]);
         }
 
         g_Game.PrecacheGeneric( "sprites/" + szSprDir + "/" + self.pev.classname + ".txt");

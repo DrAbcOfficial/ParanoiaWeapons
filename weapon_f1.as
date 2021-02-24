@@ -46,6 +46,8 @@ class weapon_f1 : CBaseParanoiaWeapon
             SetThink( ThinkFunction(DestroyItem) );
             pev.nextthink = g_Engine.time + 0.1f;
         }
+        pPlayer.pev.viewmodel = "";
+        BaseClass.Holster( skipLocal );
     }
 
     void PrimaryAttack() override{

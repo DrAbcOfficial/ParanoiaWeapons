@@ -85,17 +85,20 @@ abstract class CBaseParanoiaWeapon: ScriptBasePlayerWeaponEntity{
         g_Game.PrecacheModel( szHUDModel );
         g_Game.PrecacheGeneric( szHUDModel);
 
-        if(!szShellModel.IsEmpty())
+        if(!szShellModel.IsEmpty()){
             iShell = g_Game.PrecacheModel( szShellModel );
+            g_Game.PrecacheGeneric( szShellModel);
+        }
 
         g_SoundSystem.PrecacheSound( szEmptySound );
         for(uint i = 0; i < aryFireSound.length(); i++){
             g_SoundSystem.PrecacheSound( aryFireSound[i] );
+            g_Game.PrecacheGeneric( "sound/" + aryFireSound[i]);
         }
         for(uint i = 0; i < aryOtherSound.length(); i++){
             g_SoundSystem.PrecacheSound( aryOtherSound[i] );
+            g_Game.PrecacheGeneric( "sound/" + aryOtherSound[i]);
         }
-
         g_Game.PrecacheGeneric( "sprites/" + szSprDir + "/" + self.pev.classname + ".txt");
     }
 

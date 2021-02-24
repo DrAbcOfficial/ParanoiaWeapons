@@ -21,7 +21,7 @@ class weapon_spas12 : CBaseParanoiaWeapon{
         iMaxAmmo1 = 48;
         iMaxClip = 8;
         iSlot = 4;
-        iPosition = 11;
+        iPosition = 24;
         iFlag = 0;
         iWeight = 4;
         iFOV = 70;
