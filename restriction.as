@@ -227,4 +227,23 @@ void MapActivate(){
             aryItems[i].Spawn();
         }
     }
+    //Create Trigger Entity
+    if(szMapName == "restriction01")
+        g_EntityFuncs.CreateEntity("game_text",  
+            dictionary = {
+                {"channel", "1"},
+                {"fxtime", "0.25"},
+                {"holdtime", "1.2"},
+                {"fadeout", "0.5"},
+                {"fadein", "1.5"},
+                {"color2", "240 110 0"},
+                {"color", "100 100 100"},
+                {"effect", "1"},
+                {"y", "0.67"},
+                {"x", "-1"},
+                {"delay", "5"},
+                {"targetname", "Start_Door"},
+                {"message", "Enabled Enhance plugins by Dr.Abc"},
+                {"origin", "2763 1162 -100"}
+            }, true);
 }

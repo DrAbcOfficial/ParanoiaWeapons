@@ -74,6 +74,8 @@ HookReturnCode PlayerPostThink( CBasePlayer@ pPlayer )
 
 HookReturnCode PlayerSpawn(CBasePlayer@ pPlayer){
     aryPlayerBattery[pPlayer.entindex()] = 100;
+    pPlayer.GiveNamedItem("weapon_painkiller");
+    pPlayer.GiveNamedItem("weapon_flashbattery");
     return HOOK_CONTINUE;
 }
 

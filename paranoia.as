@@ -21,5 +21,6 @@ void PluginInit(){
 
 void MapInit(){
     WeaponRegister();
-    BatteryHookRegister();
+    //Nope we don't need this enable as default
+    //BatteryHookRegister();
 }
