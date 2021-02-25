@@ -47,7 +47,7 @@ class weapon_f1 : CBaseParanoiaWeapon
             pev.nextthink = g_Engine.time + 0.1f;
         }
         pPlayer.pev.viewmodel = "";
-        BaseClass.Holster( skipLocal );
+        BaseClass.Holster();
     }
 
     void PrimaryAttack() override{
