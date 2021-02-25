@@ -87,6 +87,7 @@ class point_checkpoint : ScriptBaseAnimating
         g_Game.PrecacheModel( "sprites/exit1.spr" );
         
         g_SoundSystem.PrecacheSound( "weapons/paranoia/paranoia.mp3" );
+        g_Game.PrecacheGeneric("sound/weapons/paranoia/paranoia.mp3");
         g_SoundSystem.PrecacheSound( "debris/beamstart7.wav" );
         g_SoundSystem.PrecacheSound( "ambience/port_suckout1.wav" );
         
