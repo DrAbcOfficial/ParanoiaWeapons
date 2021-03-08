@@ -140,7 +140,10 @@ class CExtraMonsterPosItem{
     void Spawn(){
         for(uint i = 0; i < aryPos.length(); i++){
             array<int> pos = aryPos[i];
-            CBaseEntity@ pEntity = g_EntityFuncs.Create(szClassName, Vector(pos[0], pos[1], pos[2]), Vector(0, pos[3], 0), false);
+            CBaseEntity@ pEntity = g_EntityFuncs.Create(szClassName, Vector(pos[0], pos[1], pos[2]), Vector(0, pos[3], 0), true);
+            //stop open my door u shit zombie
+            pEntity.pev.spawnflags = 1;
+            g_EntityFuncs.DispatchSpawn(pEntity.edict());
             if(pEntity.pev.size.Length() <= 0)
                 g_EntityFuncs.SetSize(pEntity.pev, VEC_HUMAN_HULL_MIN, VEC_HUMAN_HULL_MAX);
             CBaseMonster@ pMonster = cast<CBaseMonster@>(@pEntity);
@@ -218,6 +221,13 @@ void MapActivate(){
         for(uint i = 0; i < aryItems.length(); i++){
             aryItems[i].Spawn();
         }
+    }
+
+    //SSSSTTTTTOOOOPPPP MMMMMOOOVVVVVIIIIINNNNGGGGG MMMMMYYYY DDDOOOORRRR
+    CBaseEntity@ pEntity = null;
+    while((@pEntity = g_EntityFuncs.FindEntityByClassname( pEntity, "func_door")) !is null ){
+       pEntity.pev.spawnflags |= 512;
+       g_Log.PrintF("" + pEntity.pev.spawnflags + "\n");
     }
 
     //Create New Monsters

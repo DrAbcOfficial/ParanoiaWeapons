@@ -4,7 +4,16 @@ dictionary dicAddItem = {
         array<CMapAddItem@> = {
             CMapAddItem("ammo_apsammobox", array<Vector> = {
                 Vector(452, -2117, -520),
-                Vector(409, -2100, -520)
+                Vector(409, -2100, -520),
+                Vector(1547, -2839, -638),
+                Vector(1523, -2820, -638),
+                Vector(1476, -2783, -699),
+                Vector(1560, -2746, -699),
+                Vector(1823, -2764, -699)
+            }),
+            CMapAddItem("item_healthkit", array<Vector> = {
+                Vector(1862, -2906, -639),
+                Vector(1819, -2945, -639)
             }),
             CMapAddItem("ammo_flashbattery", array<Vector> = {
                 Vector(2017, 1075, -91),

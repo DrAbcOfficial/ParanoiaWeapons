@@ -103,7 +103,6 @@ class point_checkpoint : ScriptBaseAnimating
         
         self.pev.movetype         = MOVETYPE_NONE;
         self.pev.solid             = SOLID_TRIGGER;
-        self.pev.renderfx       = kRenderFxDistort;
         
         self.pev.framerate         = 1.0f;
         
@@ -207,7 +206,7 @@ class point_checkpoint : ScriptBaseAnimating
         
         g_SoundSystem.EmitSound( self.edict(), CHAN_STATIC, "weapons/paranoia/paranoia.mp3", 1.0f, ATTN_NONE );
 
-        self.pev.rendermode        = kRenderTransAdd;
+        self.pev.rendermode        = kRenderTransTexture;
         self.pev.renderamt        = 255;
         
         SetThink( ThinkFunction( this.FadeThink ) );
@@ -246,8 +245,7 @@ class point_checkpoint : ScriptBaseAnimating
     {
         if ( self.pev.renderamt > 0 )
         {
-            self.StudioFrameAdvance();
-            
+            //self.StudioFrameAdvance();
             self.pev.renderamt -= 4;
             if ( self.pev.renderamt < 0 )
                 self.pev.renderamt = 0;
